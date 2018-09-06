@@ -16,8 +16,12 @@ namespace Section1
                 notQuit = DisplayMenu();                               //displays the menu indifinitly
             } while (notQuit);                          
 
+            
+
            //PlayWithStrings();
         }
+
+       
 
         private static void PlayWithStrings()  // examples on using strings also for the first lab on padding columns
         {
@@ -58,7 +62,7 @@ namespace Section1
             Console.WriteLine(str);
 
             // Approach 4
-            Console.WriteLine($"Hello {firstName} {lastName}");         // $ is crital its an interpeted string
+            Console.WriteLine($"Hello {firstName} {lastName}");         // $ is crital its an interpeted string   string fullName = $"{firstName} {lastName}"
                                                                         // going forward use this type of string(Interpeted string) *****************************************
             
             // Null vs Empty-------------------------------------------------------------------------------
@@ -72,6 +76,10 @@ namespace Section1
 
             if (!String.IsNullOrEmpty(firstName))       // this is the perfered waay ************************************************************
                 Console.WriteLine(firstName);
+
+            // if (firstName.Lenght == 0)
+            // if (firstName == " ")
+            // if (firstName ==  string.Empty)
 
             // Other Stuff -------------------------------------------------------------------
             string upperName = firstName.ToUpper();         // changes to uppercase letters    
@@ -95,6 +103,34 @@ namespace Section1
                  
         }
 
+        private static void PlayWithArrays()    // examples for arrays
+        {
+            //int count = ReadInt32("How many name? ", 1);        // the 1 gives us a min value to accept for names
+
+            //string[] names = new string[count];         // how to declare and create strings in C#... also names will be the size names.Length(used below)
+
+            //// reads the name(s) from the user
+            //for (int index = 0; index < count; ++index)  // ++index works better for performance purposes in C# and C++
+            //{
+            //    Console.WriteLine("Name? ");
+            //    names[index] = Console.ReadLine();          
+            //};
+
+            //// foreach makes it read only
+            //// displays the name(s)  name will have the next element in the array names.. also dont have to worry about bounds checking 
+            //foreach (string name in names) // equivalent to a while loop (this is better because it has built in protection) does the same thing as the for loop
+            ////for (int index = 0; index < names.Length; ++index) // every array expression a length (name of array).Length
+            //{
+            //    //readonly - not allowed
+            //    // name = "";
+            //    string str = name;
+            //    str = "";
+            //    // Console.WriteLine(names[index]);
+            //    Console.WriteLine(name);
+            //};
+        }
+
+        
         private static bool DisplayMenu()
         {
             while (true)
@@ -136,7 +172,9 @@ namespace Section1
         
         private static void AddMovie()
         {
-            Console.WriteLine("Add Movie");
+            name = ReadString("Enter a name: ", true);
+            description = ReadString("Enter a description: ");
+            runLength = ReadInt32("Enter a run length (in minutes): ", 0);
         }
 
         private static void EditMovie()
@@ -154,5 +192,50 @@ namespace Section1
             Console.WriteLine("View Movies");
         }
 
+        // Helper Function for program -- its going to read an int and displays an error if an int is not entered
+        private static int ReadInt32(string message, int minValue)
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (Int32.TryParse(input, out int result))
+                {
+                    if (result >= minValue)
+                        return result;
+                };
+
+                Console.WriteLine($"You must enter an intger value >= {minValue}");
+            };
+        }
+
+        // helper function for program
+        private static string ReadString ( string message )
+        {
+            return ReadString(message, false);    // this call the readstring bellow        
+        }
+
+        // helper function for program
+        private static string ReadString( string message, bool required )
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (!String.IsNullOrEmpty(input) || !required)                
+                    return input;
+
+                Console.WriteLine("You must enter a value");
+            };            
+        }
+
+        // A movie
+        static string name;
+        static string description;
+        static int runLength;
+        //static DateTime releaseDate;
     }
+
 }

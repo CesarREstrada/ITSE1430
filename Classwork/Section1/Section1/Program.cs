@@ -20,7 +20,62 @@ namespace Section1
             //PlayWithStrings();
         }
 
+        private static void PlayWithObjects()
+        {
+            int hours = 10;
+            Int32 hoursFull = 10;
+            var areEqual = hours == hoursFull;
 
+            
+            var obj1 = "Hello";
+            DisplayObject(obj1);
+
+
+        }
+
+        private static void DisplayObject( object value )
+        {
+            if (value == null)
+                return;
+
+            // approach 1
+            if (value is string)
+            {
+                var str = (string)value;      // just verifies its a string    
+                Console.WriteLine(str);
+            } else
+            {
+                var str = value.ToString();
+                Console.WriteLine(str);
+            };
+
+            // approach 2------- AS operator
+            var str2 = value as string;
+            if (str2 != null)
+                Console.WriteLine(str2);
+            else
+                Console.WriteLine(value.ToString());
+
+            // approach 3
+            var str3 = value as string;
+            Console.WriteLine((str3 != null) ? str3.ToString() : value.ToString());
+
+            // approach 4
+            var str4 = value as string;
+            Console.WriteLine((str4 ?? value).ToString());  // choses one of the two expressions one ?? two
+
+            // approach 5**
+            //var str5 = value is string;             // is returns true or false
+            if (value is string str5)                  //the variable it creats is only scoped to this if else statment
+                Console.WriteLine(str5.ToString());
+            else
+                Console.WriteLine(value.ToString());
+
+            // approach 6 know as the null conditional ---- protect me from errors
+            var str6 = value as string;
+            Console.WriteLine(str6.ToString());
+
+        }
 
         private static void PlayWithStrings()  // examples on using strings also for the first lab on padding columns
         {
@@ -68,6 +123,8 @@ namespace Section1
              string missing = null;      // c++ and c# nulls are not the same.... Null in C# means i have a value                                    
              string empty = "";
              string empty2 = String.Empty;       // predefinded value which its string is empty---- used for langues that dont use strings
+
+            // every expression has a to string
 
              // checking for empty strings---------------------------------------------------------
              // if (firstName.Length == 0)            

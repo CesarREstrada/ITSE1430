@@ -218,10 +218,10 @@ namespace Lab_1_Pizza_Creator
 				// running total
 				Console.WriteLine($"{pizzaSize} {pizzaPrice,15:C}");
 				Console.WriteLine($"Meat toppings {meatTotal,13:C}");
-				if (meatChoices[0] == true)
-				{
-					Console.WriteLine("\t Bacon added press 6 to remove");
-				}
+				//if (meatChoices[0] == true)
+				//{
+				//	Console.WriteLine("\t Bacon added press 6 to remove");
+				//}
 
 
 				//if(input = 'b')
@@ -428,7 +428,8 @@ namespace Lab_1_Pizza_Creator
 					case '1':
 						if (choice == 1)
 						{
-							sauceChoices[0] = "Traditional";
+							sauceChoices[0] = true;
+							sauce = true;
 						}
 						Cheese();
 						return true;
@@ -436,7 +437,7 @@ namespace Lab_1_Pizza_Creator
 					case '2':
 						if (choice == 2)
 						{
-							sauceChoices[1] = "Garlic";
+							sauceChoices[1] = true;
 							saucePrice = 1.00m;
 						}
 						Cheese();
@@ -445,7 +446,7 @@ namespace Lab_1_Pizza_Creator
 					case '3':
 						if (choice == 3)
 						{
-							sauceChoices[2] = "Oregano";
+							sauceChoices[2] = true;
 							saucePrice = 1.00m;
 						}
 						Cheese();
@@ -483,7 +484,7 @@ namespace Lab_1_Pizza_Creator
 					case '1':
 						if (choice == 1)
 						{
-							cheeseChocies = "Regular";
+							cheeseChoices[0] = true;
 						}
 						Delivery();
 						return true;
@@ -491,7 +492,7 @@ namespace Lab_1_Pizza_Creator
 					case '2':
 						if (choice == 2)
 						{
-							cheeseChocies = "Extra";
+							cheeseChoices[1] = true;
 							cheesePrice = 1.25m;
 						}
 						Delivery();
@@ -575,11 +576,13 @@ namespace Lab_1_Pizza_Creator
 		static decimal vegTotal;
 
 		// Sausce options
-		static string[] sauceChoices = new string[count];
+		static bool sauce;
+		static bool[] sauceChoices = new bool[count];
 		static decimal saucePrice = 0.00m;
 
 		// Cheese options
-		static string cheeseChocies;
+		//static string cheeseChocies;
+		static bool[] cheeseChoices = new bool[count];
 		static decimal cheesePrice = 0.00m;
 
 		// Delivery options

@@ -35,6 +35,7 @@ namespace Lab_1_Pizza_Creator
 				Console.WriteLine("\t4. Quit");
 
 				string input = Console.ReadLine();
+				Console.Write("\n");
 				switch (input[0])
 				{
 					case '1':
@@ -62,8 +63,6 @@ namespace Lab_1_Pizza_Creator
 
 		private static bool NewOrder()
 		{
-
-
 			while (true)
 			{
 				Console.WriteLine("Choose the size of your pizza\n");
@@ -83,7 +82,7 @@ namespace Lab_1_Pizza_Creator
 						{
 							pizzaSize = "Small Pizza";
 							pizzaPrice = 5.00m;
-							displaySize = 1;
+							displaySize[0] = true;
 						}
 						SmallPizza();
 						return true;
@@ -93,7 +92,7 @@ namespace Lab_1_Pizza_Creator
 						{
 							pizzaSize = "Medium Pizza";
 							pizzaPrice = 6.25m;
-							displaySize = 2;
+							displaySize[1] = true;
 						}
 						MediumPizza();
 						return true;
@@ -103,7 +102,7 @@ namespace Lab_1_Pizza_Creator
 						{
 							pizzaSize = "Large Pizza";
 							pizzaPrice = 8.75m;
-							displaySize = 3;
+							displaySize[2] = true;
 						}
 						LargePizza();
 						return true;
@@ -125,84 +124,101 @@ namespace Lab_1_Pizza_Creator
 
 		private static void DisplayOrder()
 		{
-			
-			if (displaySize == 1)
+			//if (displaySize[3] == false)
+			//{
+			//	Console.WriteLine("No order is available to view at this time.\n");
+			//	return;
+			//}
+			bool flag = false;
+
+			for (int i = 0; i < displayCount; ++i)
+			{				
+				if (displaySize[i] == true)
+				{
+					flag = true;
+					var receipt = "Your Order";
+					Console.WriteLine($"\n\n\t{receipt.PadLeft(20)}");
+					Console.WriteLine($"\t{pizzaSize}{pizzaPrice,15:C}");
+
+					// take out or delivery
+					for (int j = 0; j < count; ++j)
+					{
+						if (delivery[j] == true)
+						{
+							Console.WriteLine($"\t{deliveryOptions[i]}{deliveryPrice,18:C}");
+						}
+					}
+
+					// Meat Choices
+					if (meat == true)
+					{
+						Console.WriteLine("\tMeats");
+					}
+					for (int j = 0; j < count; ++j)
+					{
+						if (meatChoices[j] == true)
+						{
+							Console.WriteLine($"\t   {meats[i].PadRight(10)}{meatPrice,13:c}");
+						}
+					}
+
+					// Vegetables
+					if (veg == true)
+					{
+						Console.WriteLine("\tVegetables");
+					}
+					for (int j = 0; j < count; ++j)
+					{
+						if (vegChoices[j] == true)
+						{
+							Console.WriteLine($"\t   {vegetables[i].PadRight(12)}{meatPrice,11:c}");
+						}
+					}
+
+					// Sauces				
+					Console.WriteLine("\tSauce");
+					for (int j = 0; j < count; ++j)
+					{
+						if (sauceChoices[j] == true)
+						{
+							Console.WriteLine($"\t   {sauces[i].PadRight(12)}{saucePrice,11:c}");
+						}
+					}
+
+					// cheese
+					Console.WriteLine("\tCheese");
+					for (int j = 0; j < count; ++j)
+					{
+						if (cheese[j] == true)
+						{
+							Console.WriteLine($"\t   {cheeseChoices[i].PadRight(12)}{cheesePrice,11:c}");
+						}
+					}
+
+					//total
+					totalPrice = meatTotal + vegTotal + saucePrice + cheesePrice + deliveryPrice;
+					Console.WriteLine("\t---------------------------");
+					Console.WriteLine($"\tTotal{totalPrice,21:c}\n");
+					
+				}				
+			}
+
+			if (flag == false)
 			{
-				Console.WriteLine($"{pizzaSize}{pizzaPrice,15:C}");
-				Console.WriteLine($"{deliveryOptions}{deliveryPrice,18:C}");
-				
-				// Meat Choices
-				if (meat == true)
-				{
-					Console.WriteLine("Meats");
-				}
-				if (meatChoices[0] == true)
-				{
-					Console.WriteLine($"   Bacon{meatPrice,18:c}");
-				}
-				if (meatChoices[1] == true)
-				{
-					Console.WriteLine($"   Ham{meatPrice,20:c}");
-				}
-				if (meatChoices[2] == true)
-				{
-					Console.WriteLine($"   Pepperoni{meatPrice,14:c}");
-				}
-				if (meatChoices[3] == true)
-				{
-					Console.WriteLine($"   Sausage{meatPrice,16:c}");
-				}
-
-				// Vegetables
-				if (veg == true)
-				{
-					Console.WriteLine("Vegetables");
-				}
-					if (vegChoices[0] == true)
-				{
-					Console.WriteLine($"   Black Olives{vegPrice,11:c}");
-				}
-				if (vegChoices[1] == true)
-				{
-					Console.WriteLine($"   Mushrooms{vegPrice,14:c}");
-				}
-				if (vegChoices[2] == true)
-				{
-					Console.WriteLine($"   Onions{vegPrice,17:c}");
-				}
-				if (vegChoices[3] == true)
-				{
-					Console.WriteLine($"   Peppers{vegPrice,16:c}");
-				}
-
+				Console.WriteLine("No order is available to view at this time.\n");
+			}
+				//if (String.IsNullOrEmpty(pizzaChoice))
+				//{
+				//	Console.WriteLine("No order is available to view at this time.");
+				//	return;
+				//};
 
 
 			}
-			if (displaySize == 2)
-			{
-
-			}
-			if (displaySize == 3)
-			{
-
-			}
-			if (String.IsNullOrEmpty(pizzaChoice))
-			{
-				Console.WriteLine("No order is available to view at this time.");
-				return;
-			};
-
-
-		}
 
 		private static bool SmallPizza()
 		{
 			string[] remove = { "B", "H", "P", "S" };
-
-			//for (int i = 0; i < count; i++)
-			//{
-			//	meatChoices[i] = "";
-			//}
 
 			while (true)
 			{
@@ -218,41 +234,18 @@ namespace Lab_1_Pizza_Creator
 				// running total
 				Console.WriteLine($"{pizzaSize} {pizzaPrice,15:C}");
 				Console.WriteLine($"Meat toppings {meatTotal,13:C}");
-				//if (meatChoices[0] == true)
-				//{
-				//	Console.WriteLine("\t Bacon added press 6 to remove");
-				//}
-
-
-				//if(input = 'b')
-				//{
-				//	Console.Write($" -- Press {remove[i]} to remove your {meatChoices[i]} topping");
-				//}
+				
 				var meats = new List<string>();
-
 				string input = Console.ReadLine();
 				int choice;
 				bool input2 = Int32.TryParse(input, out choice);
-
-
-				//foreach (var meat in meats)
-				//{
-				//	Console.WriteLine($"{meat}");
-				//}
-				//for (int i = 0; i < 4; i++)
-				//{
-				//	Console.WriteLine($"{meats[i]}");
-				//}
-
-
+				
 				switch (input[0])
 				{
 
 					case '1':
 						if (choice == 1)
 						{
-							//meats.Add("Bacon");
-							//meatChoices[0] = "Bacon";
 							meatChoices[0] = true;
 							meatTotal += meatPrice;
 							meat = true;							
@@ -263,8 +256,6 @@ namespace Lab_1_Pizza_Creator
 					case '2':
 						if (choice == 2)
 						{
-							//meats.Add("Ham");
-							//meatChoices[1] = "Ham";
 							meatChoices[1] = true;
 							meatTotal += meatPrice;
 							meat = true;						
@@ -275,8 +266,6 @@ namespace Lab_1_Pizza_Creator
 					case '3':
 						if (choice == 3)
 						{
-							//meats.Add("Pepperoni");
-							//meatChoices[2] = "Pepperoni";
 							meatChoices[2] = true;
 							meatTotal += meatPrice;
 							meat = true;
@@ -287,8 +276,6 @@ namespace Lab_1_Pizza_Creator
 					case '4':
 						if (choice == 4)
 						{
-							//meats.Add("Sausage");
-							//meatChoices[3] = "Sausage";
 							meatChoices[3] = true;
 							meatTotal += meatPrice;
 							meat = true;
@@ -307,13 +294,6 @@ namespace Lab_1_Pizza_Creator
 
 			}
 		}
-
-		//[System.ComponentModel.DesignerCategory("")]
-		//public class MeatsClass
-		//{
-		//	public static List<string> MyList { get; set}
-		//}
-
 
 		private static void MediumPizza()
 		{
@@ -428,8 +408,7 @@ namespace Lab_1_Pizza_Creator
 					case '1':
 						if (choice == 1)
 						{
-							sauceChoices[0] = true;
-							sauce = true;
+							sauceChoices[0] = true;							
 						}
 						Cheese();
 						return true;
@@ -484,7 +463,7 @@ namespace Lab_1_Pizza_Creator
 					case '1':
 						if (choice == 1)
 						{
-							cheeseChoices[0] = true;
+							cheese[0] = true;
 						}
 						Delivery();
 						return true;
@@ -492,7 +471,7 @@ namespace Lab_1_Pizza_Creator
 					case '2':
 						if (choice == 2)
 						{
-							cheeseChoices[1] = true;
+							cheese[1] = true;
 							cheesePrice = 1.25m;
 						}
 						Delivery();
@@ -531,7 +510,7 @@ namespace Lab_1_Pizza_Creator
 					case '1':
 						if (choice == 1)
 						{
-							deliveryOptions = "Take out";							
+							delivery[0] = true;							
 						}
 						DisplayOrder();
 						return true;
@@ -539,7 +518,7 @@ namespace Lab_1_Pizza_Creator
 					case '2':
 						if (choice == 2)
 						{
-							deliveryOptions = "Delivery";
+							delivery[1] = true;
 							deliveryPrice = 2.50m;
 						}
 						DisplayOrder();
@@ -560,8 +539,7 @@ namespace Lab_1_Pizza_Creator
 		static decimal pizzaPrice;
 
 		// meat toppings
-		//List<string> meatList;
-		//static string[] meatChoices = new string[count];
+		static string[] meats = { "Bacon", "Ham", "Pepperoni", "Sausage" };
 		static bool[] meatChoices = new bool[count];
 		static bool meat;
 		static decimal meatPrice = 0.75m;
@@ -569,28 +547,33 @@ namespace Lab_1_Pizza_Creator
 
 
 		// veg toppings
-		//static string[] vegChoices = new string[count];
+		static string[] vegetables = {"Black Olives", "Mushrooms", "Onions", "Peppers" };
 		static bool veg;
 		static bool[] vegChoices = new bool[count];
 		static decimal vegPrice = 0.50m;
 		static decimal vegTotal;
 
 		// Sausce options
-		static bool sauce;
+		static string[] sauces = { "Traditional", "Garlic", "Oregano" };		
 		static bool[] sauceChoices = new bool[count];
 		static decimal saucePrice = 0.00m;
 
 		// Cheese options
 		//static string cheeseChocies;
-		static bool[] cheeseChoices = new bool[count];
+		static bool[] cheese = new bool[count];
+		static string[] cheeseChoices = { "Regular", "Extra" };
 		static decimal cheesePrice = 0.00m;
 
 		// Delivery options
-		static string deliveryOptions;
-		static decimal deliveryPrice;
+		//static string[] delivery = { "Take out", "Delivery" };
+		static bool[] delivery = new bool[count];
+		static string[] deliveryOptions = { "Take out", "Delivery" };
+		static decimal deliveryPrice = 0.00m;
 
 		// Display option
-		static int displaySize;
+		static int displayCount = 3;
+		static bool[] displaySize = new bool[displayCount];
+	
 
 		// Total price
 		static decimal totalPrice = 0.00m;

@@ -150,7 +150,14 @@ namespace Lab_1_Pizza_Creator
 					flag = true;
 					var receipt = "Your Order\n";
 					Console.WriteLine($"\n\n\t{receipt.PadLeft(20)}");
-					Console.WriteLine($"\t{pizzaSize}{pizzaPrice,15:C}");
+					if (displaySize[0] == true || displaySize[2] == true)
+					{
+						Console.WriteLine($"\t{pizzaSize} {pizzaPrice,14:C}");
+					}
+					else
+					{
+						Console.WriteLine($"\t{pizzaSize} {pizzaPrice,13:C}");
+					}
 
 					// take out or delivery
 					for (int j = 0; j < count; ++j)
@@ -233,7 +240,14 @@ namespace Lab_1_Pizza_Creator
 			while (true)
 			{
 				Console.WriteLine($"Toppings for your {pizzaSize}\n");
-				Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				if (displaySize[0] == true || displaySize[2] == true)
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				}
+				else
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				}
 				Console.Write($"\tMeat toppings {meatTotal,10:C}");
 				for (int i = 0; i < count; ++i)
 				{
@@ -347,7 +361,14 @@ namespace Lab_1_Pizza_Creator
 			while (true)
 			{
 				Console.WriteLine($"Toppings for your {pizzaSize}\n");
-				Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				if (displaySize[0] == true || displaySize[2] == true)
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				}
+				else
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				}
 				Console.Write($"\tMeat toppings {meatTotal,10:C}");
 				for (int i = 0; i < count; ++i)
 				{
@@ -462,7 +483,14 @@ namespace Lab_1_Pizza_Creator
 			while (true)
 			{
 				Console.WriteLine($"Toppings for your {pizzaSize}\n");
-				Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				if (displaySize[0] == true || displaySize[2] == true)
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				}
+				else
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				}
 				Console.Write($"\tMeat toppings {meatTotal,10:C}");
 				for (int i = 0; i < count; ++i)
 				{
@@ -577,7 +605,14 @@ namespace Lab_1_Pizza_Creator
 			while (true)
 			{
 				Console.WriteLine($"Toppings for your {pizzaSize}\n");
-				Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				if (displaySize[0] == true || displaySize[2] == true)
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				}
+				else
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				}
 				Console.Write($"\tMeat toppings {meatTotal,10:C}");
 				for (int i = 0; i < count; ++i)
 				{
@@ -699,7 +734,14 @@ namespace Lab_1_Pizza_Creator
 			while (true)
 			{
 				Console.WriteLine($"Toppings for your {pizzaSize}\n");
-				Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				if (displaySize[0] == true || displaySize[2] == true)
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				}
+				else
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				}
 				Console.Write($"\tMeat toppings {meatTotal,10:C}");
 				for (int i = 0; i < count; ++i)
 				{
@@ -768,7 +810,14 @@ namespace Lab_1_Pizza_Creator
 			while (true)
 			{
 				Console.WriteLine($"Toppings for your {pizzaSize}\n");
-				Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				if (displaySize[0] == true || displaySize[2] == true)
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				}
+				else
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				}
 				Console.Write($"\tMeat toppings {meatTotal,10:C}");
 				for (int i = 0; i < count; ++i)
 				{
@@ -844,7 +893,14 @@ namespace Lab_1_Pizza_Creator
 			while (true)
 			{
 				Console.WriteLine($"Toppings for your {pizzaSize}\n");
-				Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				if (displaySize[0] == true || displaySize[2] == true)
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,12:C}");
+				}
+				else
+				{
+					Console.WriteLine($"\t{pizzaSize} {pizzaPrice,11:C}");
+				}
 				Console.Write($"\tMeat toppings {meatTotal,10:C}");
 				for (int i = 0; i < count; ++i)
 				{
@@ -942,7 +998,6 @@ namespace Lab_1_Pizza_Creator
 			//    return false;
 		}
 
-
 		static int count = 4;
 
 		// pizza sizes
@@ -955,7 +1010,6 @@ namespace Lab_1_Pizza_Creator
 		static bool meat;
 		static decimal meatPrice = 0.75m;
 		static decimal meatTotal;
-
 
 		// veg toppings
 		static string[] vegetables = {"Black Olives", "Mushrooms", "Onions", "Peppers" };

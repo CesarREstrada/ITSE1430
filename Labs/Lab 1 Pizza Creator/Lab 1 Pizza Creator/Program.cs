@@ -134,7 +134,7 @@ namespace Lab_1_Pizza_Creator
 					vegChoices[i] = false;
 					meatChoices[i] = false;
 				}
-				Console.WriteLine("Your order has been deleted!");
+				Console.WriteLine("Your order has been deleted!\n");
 				NewOrder();
 			};
 		}

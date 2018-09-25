@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Itse1430.Movie.Lib
+namespace Itse1430.MovieLib
 {
-    class Movie
+    public class Movie
     {
-        public string name;
+        public string Name;
         //public System.String Name;
+
+        public string Description;
+
+        public int ReleaseYear;
+        public int RunLenght;
+
+        int someValue;              // both of these are private(only accessable in this class Movie type only)
+        private int someValue2;
     }
 }

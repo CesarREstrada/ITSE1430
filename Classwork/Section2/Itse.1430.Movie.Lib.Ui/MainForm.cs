@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Itse._1430.Movie.Lib.Ui
+namespace Itse._1430.MovieLib.Ui
 {
     public partial class MainForm : Form
     {
@@ -22,7 +22,7 @@ namespace Itse._1430.Movie.Lib.Ui
         {
             // this logic only works with the file exit menu to close the window for asking the user before closing
             // the if statment asks the user wants to close the window
-            if (MessageBox.Show("Are you sure you want to exit?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to exit?", "Close", MessageBoxButtons.YesNo) == DialogResult.No) // dialogResult is a enum (glorifed named constants)
                 return;
 
             // closes the form when user selects file exit
@@ -36,6 +36,16 @@ namespace Itse._1430.Movie.Lib.Ui
             // Sorry is the message in the box. Help is the title of the pop of box.
             // this and message box icon have to be in that order the window will center on the main(parent) window
             MessageBox.Show(this, "Sorry", "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void OnMovieAdd( object sender, EventArgs e ) // highlight and right click rename to change name symbolically and click apply
+        {
+            var form = new MovieForm(); // creates new movie
+
+           if(form.ShowDialog(this) == DialogResult.Cancel)   // will display the form (this) will make this window the child of the parent
+                return;
+
+            MessageBox.Show("Adding movie");  // a pop up comes up displaying the message "Adding Movie"
         }
     }
 }

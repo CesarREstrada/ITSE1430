@@ -1,4 +1,4 @@
-﻿namespace Itse._1430.Movie.Lib.Ui
+﻿namespace Itse._1430.MovieLib.Ui
 {
     partial class MainForm
     {
@@ -30,12 +30,12 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.movieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.movieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._miHelpAnout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -60,13 +60,12 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
-            // helpToolStripMenuItem
+            // eExitToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._miHelpAnout});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "&Help";
+            this.eExitToolStripMenuItem.Name = "eExitToolStripMenuItem";
+            this.eExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eExitToolStripMenuItem.Text = "E&xit";
+            this.eExitToolStripMenuItem.Click += new System.EventHandler(this.eExitToolStripMenuItem_Click);
             // 
             // movieToolStripMenuItem
             // 
@@ -78,19 +77,13 @@
             this.movieToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.movieToolStripMenuItem.Text = "&Movie";
             // 
-            // eExitToolStripMenuItem
-            // 
-            this.eExitToolStripMenuItem.Name = "eExitToolStripMenuItem";
-            this.eExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.eExitToolStripMenuItem.Text = "E&xit";
-            this.eExitToolStripMenuItem.Click += new System.EventHandler(this.eExitToolStripMenuItem_Click);
-            // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Insert;
             this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.OnMovieAdd);
             // 
             // editToolStripMenuItem
             // 
@@ -105,11 +98,19 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._miHelpAnout});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
             // _miHelpAnout
             // 
             this._miHelpAnout.Name = "_miHelpAnout";
             this._miHelpAnout.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this._miHelpAnout.Size = new System.Drawing.Size(152, 22);
+            this._miHelpAnout.Size = new System.Drawing.Size(126, 22);
             this._miHelpAnout.Text = "About";
             this._miHelpAnout.Click += new System.EventHandler(this.OnHelpAbout);
             // 
@@ -122,7 +123,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movie Library";

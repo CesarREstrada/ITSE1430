@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Itse._1430.Movie.Lib.Ui.Properties
+namespace Itse._1430.MovieLib.Ui.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace Itse._1430.Movie.Lib.Ui.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Itse._1430.Movie.Lib.Ui.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Itse._1430.MovieLib.Ui.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

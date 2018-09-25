@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Itse._1430.Movie.Lib.Ui.Properties
+namespace Itse._1430.MovieLib.Ui.Properties
 {
 
 

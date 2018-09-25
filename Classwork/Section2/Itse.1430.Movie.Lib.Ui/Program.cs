@@ -4,7 +4,7 @@
 //using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Itse._1430.Movie.Lib.Ui
+namespace Itse._1430.MovieLib.Ui
 {
     static class Program
     {

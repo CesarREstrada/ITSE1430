@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Itse1430.MovieLib;
 
 namespace Itse._1430.MovieLib.Ui
 {
@@ -45,7 +46,12 @@ namespace Itse._1430.MovieLib.Ui
            if(form.ShowDialog(this) == DialogResult.Cancel)   // will display the form (this) will make this window the child of the parent
                 return;
 
-            MessageBox.Show("Adding movie");  // a pop up comes up displaying the message "Adding Movie"
-        }
+            // MessageBox.Show("Adding movie");  // a pop up comes up displaying the message "Adding Movie"
+            Movie = form.Movie;
+            //Movie.Name = "";       //whips out the field ( you probably dont need this)
+         }
+
+        private Movie Movie;
+        
     }
 }

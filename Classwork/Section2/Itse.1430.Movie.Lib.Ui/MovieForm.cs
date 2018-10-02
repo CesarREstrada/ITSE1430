@@ -28,25 +28,29 @@ namespace Itse._1430.MovieLib.Ui
 
         private void onSave( object sender, EventArgs e )
         {
-            var movie = new Movie();
-            var movie2 = new Movie();           //creats a new movie out of scope of 1st movie
-            var name = movie2.GetName();        // strings start off as NULL
-            
+           var movie = new Movie();
+            // var movie2 = new Movie();           //creats a new movie out of scope of 1st movie
+            //var name = movie2.GetName();        // strings start off as NULL
+
             // Name is required
-            movie.SetName(_txtName.Text);                   // passing to Movie.cs to store the data**********************************************
-            if (String.IsNullOrEmpty(_txtNameLabel.Text))
+            movie.Name = _txtName.Text;
+            //movie.SetName(_txtName.Text);                   // passing to Movie.cs to store the data**********************************************
+            if (String.IsNullOrEmpty(movie.Name))
                 return;
 
-            movie.SetDescription(_txtDescription.Text);
+            // movie.SetDescription(_txtDescription.Text);
+            movie.Description = _txtDescription.Text;
 
             // Release year is a numeric value if set
-            movie.SetReleaseYear(GetIn32(_txtReleaseYear));
+            // movie.SetReleaseYear(GetIn32(_txtReleaseYear));
+            movie.ReleaseYear = GetIn32(_txtReleaseYear);
             var releaseYear = GetIn32(_txtReleaseYear);
             if (releaseYear < 0)
                 return;
 
             // Run length, if set  you have to the dot operator***********************************************
-            movie.SetRunLenght(GetIn32(_txtRunLenght));
+            //movie.SetRunLenght(GetIn32(_txtRunLenght));
+            movie.RunLenght = GetIn32(_txtRunLenght);
             var runLenght = GetIn32(_txtRunLenght);
             if (releaseYear < 0)
                 return;

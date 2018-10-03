@@ -22,8 +22,8 @@ namespace Itse._1430.MovieLib.Ui
         private void eExitToolStripMenuItem_Click( object sender, EventArgs e )
         {
             // this logic only works with the file exit menu to close the window for asking the user before closing
-            // the if statment asks the user wants to close the window
-            if (MessageBox.Show("Are you sure you want to exit?", "Close", MessageBoxButtons.YesNo) == DialogResult.No) // dialogResult is a enum (glorifed named constants)
+            // the if statement asks the user wants to close the window
+            if (MessageBox.Show("Are you sure you want to exit?", "Close", MessageBoxButtons.YesNo) == DialogResult.No) // dialogResult is a enum (glorified named constants)
                 return;
 
             // closes the form when user selects file exit

@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CharacterCreator;
 
-namespace CharacterCreator
+namespace Lab_2_CreaterCreator
 {
-	public partial class Form1 : Form
+	public partial class CharacterForm : Form
 	{
-		public Form1()
+		public CharacterForm()
 		{
 			InitializeComponent();
 		}
+
+		public Character Character;
 	}
 }

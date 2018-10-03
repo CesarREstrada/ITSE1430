@@ -10,7 +10,7 @@ namespace Itse1430.MovieLib
 {
     public class Movie
     {
-        // in classes we dont want to use fields(variable) we want to use methods(functions) to validate and store data
+        // in classes we don't want to use fields(variable) we want to use methods(functions) to validate and store data
         public string Name                  // sample on properties
         {                                                                                       // lab 2 ****************************************
             get { return _name; }       // string get ()
@@ -109,7 +109,7 @@ namespace Itse1430.MovieLib
 
          // showing miexed accessibility
         public int Id { get; private set; }             // dummy property
-                                                        // mixed accessability
+                                                        // mixed accessibility
                                                         // 1) only one you can change
                                                         // 2) it will always be more restrictive
                                                         // 3) if return type is private cannot have public for get or set

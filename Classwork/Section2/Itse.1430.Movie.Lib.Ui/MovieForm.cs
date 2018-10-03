@@ -29,7 +29,7 @@ namespace Itse._1430.MovieLib.Ui
         private void onSave( object sender, EventArgs e )
         {
            var movie = new Movie();
-            // var movie2 = new Movie();           //creats a new movie out of scope of 1st movie
+            // var movie2 = new Movie();           //creates a new movie out of scope of 1st movie
             //var name = movie2.GetName();        // strings start off as NULL
 
             // Name is required
@@ -71,5 +71,10 @@ namespace Itse._1430.MovieLib.Ui
 
             return -1;
         }
-    }
+
+		private void MovieForm_Load(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

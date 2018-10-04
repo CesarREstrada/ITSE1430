@@ -27,13 +27,13 @@ namespace Itse._1430.MovieLib.Ui
                 return;
 
             // closes the form when user selects file exit
-            Close(); 
+            Close();
         }
 
         // help - about
         private void OnHelpAbout( object sender, EventArgs e )
         {
-            
+
             // Sorry is the message in the box. Help is the title of the pop of box.
             // this and message box icon have to be in that order the window will center on the main(parent) window
             MessageBox.Show(this, "Sorry", "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -43,15 +43,65 @@ namespace Itse._1430.MovieLib.Ui
         {
             var form = new MovieForm(); // creates new movie
 
-           if(form.ShowDialog(this) == DialogResult.Cancel)   // will display the form (this) will make this window the child of the parent
+            if (form.ShowDialog(this) == DialogResult.Cancel)   // will display the form (this) will make this window the child of the parent
                 return;
 
             // MessageBox.Show("Adding movie");  // a pop up comes up displaying the message "Adding Movie"
-            Movie = form.Movie;
+            _database.Add(form.Movie);
             //Movie.Name = "";       //whips out the field ( you probably dont need this)
-         }
+            RefreshMovies();
+        }
 
-        private Movie Movie;
-        
+        private MovieDatabase _database = new MovieDatabase();
+
+
+        // to diplays movies for _listMovies
+        private void MainForm_Load( object sender, EventArgs e )
+        {
+            _listMovies.DisplayMember = "Name";
+            // _listMovies.DisplayMember = "Description";        // overrides name and those not show name
+            RefreshMovies();
+        }
+
+        private void RefreshMovies()
+        {
+            var movies = _database.GetAll();
+
+            _listMovies.Items.Clear();
+            _listMovies.Items.AddRange(movies);
+        }
+
+        private Movie GetSelectedMovie()
+        {
+            return _listMovies.SelectedItem as Movie;            
+        }
+
+        private void OnMovieDelete( object sender, EventArgs e )
+        {
+          var item = GetSelectedMovie();
+            if (item == null)
+                return;
+
+            // add to database and refresh
+            _database.Remove(item.Name);
+            RefreshMovies();
+        }
+
+        private void OnMovieEdit( object sender, EventArgs e )
+        {
+
+            var item = GetSelectedMovie();
+            if (item == null)
+                return;
+    
+            var form = new MovieForm();
+            form.Movie = item;
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            // add to database and refresh
+            _database.Edit(item.Name, form.Movie);
+            RefreshMovies();
+        }
     }
 }

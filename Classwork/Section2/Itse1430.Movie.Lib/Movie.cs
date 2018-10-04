@@ -13,7 +13,7 @@ namespace Itse1430.MovieLib
         // in classes we don't want to use fields(variable) we want to use methods(functions) to validate and store data
         public string Name                  // sample on properties
         {                                                                                       // lab 2 ****************************************
-            get { return _name; }       // string get ()
+            get { return _name ?? ""; }       // string get ()
             set { _name = value; }      // void set (string value)
         }
         private string _name = "";   // initializer expression     // make it private to protect
@@ -120,5 +120,7 @@ namespace Itse1430.MovieLib
         {
             get { return ReleaseYear > 1940; }  // this property is deterministic
         }
+
+        public bool IsOwned { get; set; }
     }
 }

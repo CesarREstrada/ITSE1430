@@ -19,5 +19,23 @@ namespace Lab_2_CreaterCreator
 		}
 
 		public Character Character;
+
+		private void OnCancel(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
+
+		// Helper function
+		private int GetIn32(TextBox textBox)
+		{
+			if (String.IsNullOrEmpty(textBox.Text))
+				return 0;
+
+			if (Int32.TryParse(textBox.Text, out CanRaiseEvents value))
+				return value;
+
+			return -1;
+		}
 	}
 }

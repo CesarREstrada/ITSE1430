@@ -16,11 +16,15 @@ namespace CharacterCreator
 		}
 		private string _name = "";
 
+
+
 		public string Description
 		{
 			get { return _description ?? ""; }
 			set { _description = value; }
 		}
 		private string _description;
+
+		
     }
 }

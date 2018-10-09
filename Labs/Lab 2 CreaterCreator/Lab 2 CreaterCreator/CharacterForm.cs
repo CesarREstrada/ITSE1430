@@ -32,7 +32,7 @@ namespace Lab_2_CreaterCreator
 			if (String.IsNullOrEmpty(textBox.Text))
 				return 0;
 
-			if (Int32.TryParse(textBox.Text, out CanRaiseEvents value))
+			if (Int32.TryParse(textBox.Text, out var value))
 				return value;
 
 			return -1;

@@ -119,7 +119,7 @@ namespace Itse._1430.MovieLib.Ui
             EditMovie();
         }
 
-        // actions doubleclick 
+        // actions double click 
         private void OnMovieDoubleClick( object sender, EventArgs e )
         {
             EditMovie();

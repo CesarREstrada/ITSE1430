@@ -40,5 +40,12 @@ namespace Lab_2_CreaterCreator
 
 		}
 		private Character Character;
+
+		protected override void OnLoad(EventArgs e)
+		{
+			base.OnLoad(e);
+
+			_listCharacters.DisplayMember = "Name";
+		}
 	}
 }

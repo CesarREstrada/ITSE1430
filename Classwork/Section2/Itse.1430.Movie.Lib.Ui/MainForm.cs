@@ -13,10 +13,14 @@ namespace Itse._1430.MovieLib.Ui
 {
     public partial class MainForm : Form
     {
+        #region Construction
+
         public MainForm()
         {
             InitializeComponent();
         }
+        #endregion
+
 
         // file - exit
         private void eExitToolStripMenuItem_Click( object sender, EventArgs e )
@@ -52,16 +56,45 @@ namespace Itse._1430.MovieLib.Ui
             RefreshMovies();
         }
 
+
         private MovieDatabase _database = new MovieDatabase();
 
 
-        // to diplays movies for _listMovies
-        private void MainForm_Load( object sender, EventArgs e )
+        // This method can be overridden in a derived type
+        protected virtual void SomeFunction()
+        { }
+
+        // this method MUST BE defined in a derived type
+        //protected abstract void SomeAbstractFunction()
+        
+
+        //protected override void OnLoad ( EventArgs e)
+        //{
+
+        //}
+
+
+        // type override first then Onload and press enter*******************************************************************
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnLoad( EventArgs e )
         {
-            _listMovies.DisplayMember = "Name";
-            // _listMovies.DisplayMember = "Description";        // overrides name and those not show name
+            base.OnLoad(e);
+
+            _listMovies.DisplayMember = "Name";            
             RefreshMovies();
         }
+
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //// to diplays movies for _listMovies
+        //private void MainForm_Load( object sender, EventArgs e )
+        //{            
+        //    _listMovies.DisplayMember = "Name";
+        //    // _listMovies.DisplayMember = "Description";        // overrides name and those not show name
+        //    RefreshMovies();
+        //}
 
         private void RefreshMovies()
         {
@@ -78,22 +111,27 @@ namespace Itse._1430.MovieLib.Ui
 
         private void OnMovieDelete( object sender, EventArgs e )
         {
-          var item = GetSelectedMovie();
-            if (item == null)
-                return;
-
-            // add to database and refresh
-            _database.Remove(item.Name);
-            RefreshMovies();
+            DeleteMovie();
         }
 
         private void OnMovieEdit( object sender, EventArgs e )
         {
+            EditMovie();
+        }
 
+        // actions doubleclick 
+        private void OnMovieDoubleClick( object sender, EventArgs e )
+        {
+            EditMovie();
+        }
+        
+        private void EditMovie()
+        {
+            // Get selecte4d movie, if any
             var item = GetSelectedMovie();
             if (item == null)
                 return;
-    
+            // Show form with selected movie
             var form = new MovieForm();
             form.Movie = item;
             if (form.ShowDialog(this) == DialogResult.Cancel)
@@ -101,6 +139,27 @@ namespace Itse._1430.MovieLib.Ui
 
             // add to database and refresh
             _database.Edit(item.Name, form.Movie);
+            RefreshMovies();
+        }
+
+        private void OnListKeyUp( object sender, KeyEventArgs e )
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                DeleteMovie();
+            }
+                
+        }
+
+        private void DeleteMovie()
+        {
+            // Get selected movie, if any
+            var item = GetSelectedMovie();
+            if (item == null)
+                return;
+
+            // add to database and refresh
+            _database.Remove(item.Name);
             RefreshMovies();
         }
     }

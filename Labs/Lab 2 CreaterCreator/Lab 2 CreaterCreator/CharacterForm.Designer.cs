@@ -111,7 +111,7 @@
 			// _cbxProfession
 			// 
 			this._cbxProfession.AllowDrop = true;
-			this._cbxProfession.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this._cbxProfession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this._cbxProfession.FormattingEnabled = true;
 			this._cbxProfession.Items.AddRange(new object[] {
             "Fighter",
@@ -127,6 +127,7 @@
 			// 
 			// _cbxRace
 			// 
+			this._cbxRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this._cbxRace.FormattingEnabled = true;
 			this._cbxRace.Items.AddRange(new object[] {
             "Dwarf",
@@ -156,6 +157,7 @@
 			this.button1.TabIndex = 10;
 			this.button1.Text = "Save";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.OnSave);
 			// 
 			// _btnCancel
 			// 
@@ -252,7 +254,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(381, 467);
+			this.ClientSize = new System.Drawing.Size(382, 478);
+			this.ControlBox = false;
 			this.Controls.Add(this._txtAttrCharisma);
 			this.Controls.Add(this._txtAttrConstitution);
 			this.Controls.Add(this._txtAttrAgility);
@@ -274,9 +277,14 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
+			this.MaximizeBox = false;
+			this.MaximumSize = new System.Drawing.Size(400, 525);
+			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(400, 525);
 			this.Name = "CharacterForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "CharactorForm";
+			this.Text = "Create New Character";
+			this.Load += new System.EventHandler(this.CharacterForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

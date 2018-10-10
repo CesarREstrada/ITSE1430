@@ -9,14 +9,22 @@ namespace CharacterCreator
 {
 	public class Character
 	{
+		// Property to back the name fields
 		public string Name
 		{
-			get { return _name ?? ""; }
+			get { return _name ?? ""; }	// string get ()
 			set { _name = value; }
 		}
+
+		// Backing field for name
 		private string _name = "";
 
-
+		public string Profession
+		{
+			get { return _profession ?? ""; }
+			set { _profession = value; }
+		}
+		private string _profession;
 
 		public string Description
 		{
@@ -24,6 +32,8 @@ namespace CharacterCreator
 			set { _description = value; }
 		}
 		private string _description;
+
+
 
 		
     }

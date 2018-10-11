@@ -28,33 +28,18 @@ namespace Itse._1430.MovieLib.Ui
 
         private void onSave( object sender, EventArgs e )
         {
+            if (!ValidateChildren())
+                return;
+
            var movie = new Movie();
             // var movie2 = new Movie();           //creates a new movie out of scope of 1st movie
             //var name = movie2.GetName();        // strings start off as NULL
 
             // Name is required
-            movie.Name = _txtName.Text;
-            //movie.SetName(_txtName.Text);                   // passing to Movie.cs to store the data**********************************************
-            if (String.IsNullOrEmpty(movie.Name))
-                return;
-
-            // movie.SetDescription(_txtDescription.Text);
-            movie.Description = _txtDescription.Text;
-
-            // Release year is a numeric value if set
-            // movie.SetReleaseYear(GetIn32(_txtReleaseYear));
-            movie.ReleaseYear = GetIn32(_txtReleaseYear);
-            var releaseYear = GetIn32(_txtReleaseYear);
-            if (releaseYear < 0)
-                return;
-
-            // Run length, if set  you have to the dot operator***********************************************
-            //movie.SetRunLenght(GetIn32(_txtRunLenght));
-            movie.RunLenght = GetIn32(_txtRunLenght);
-            var runLenght = GetIn32(_txtRunLenght);
-            if (releaseYear < 0)
-                return;
-
+            movie.Name = _txtName.Text;           
+            movie.Description = _txtDescription.Text;           
+            movie.ReleaseYear = GetIn32(_txtReleaseYear);                
+            movie.RunLenght = GetIn32(_txtRunLenght);           
             movie.IsOwned = _chkOwned.Checked;
             
             Movie = movie;
@@ -66,7 +51,7 @@ namespace Itse._1430.MovieLib.Ui
         private int GetIn32 ( TextBox textBox)
         {
             if (String.IsNullOrEmpty(textBox.Text))
-                return 0;
+                return -1;
 
             if (Int32.TryParse(textBox.Text, out var value))
                 return value;
@@ -85,6 +70,47 @@ namespace Itse._1430.MovieLib.Ui
                 _txtRunLenght.Text = Movie.RunLenght.ToString();
                 _chkOwned.Checked = Movie.IsOwned;
             };
+
+           // ValidateChildren();     // YOU DONT REALLY NEED THIS IF YOU DONE WANT
 		}
-	}
+
+
+        //Validates it there is a name in the name text box Use events  focus validating
+        private void OnValidateName( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+
+            if (String.IsNullOrEmpty(control.Text))
+            {
+                _error.SetError(control, "Name is required");
+                e.Cancel = true;
+            } else
+                _error.SetError(control, "");
+        }
+
+        private void OnValidatingReleaseYear( object sender, CancelEventArgs e )
+        {
+           var control = sender as TextBox;
+           var result = GetIn32(control);
+            if (result < 1900)
+            {
+                _error.SetError(control, "Must Be greater than 1900");
+                e.Cancel = true;
+            } else
+                _error.SetError(control, "");
+        }
+
+        // you can use this for validating the atributes for you lab 2 for 50%(maybe)
+        private void OnValidatingRunLength( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+            var result = GetIn32(control);
+            if (result < 0)
+            {
+                _error.SetError(control, "Must be greater than 0");
+                e.Cancel = true;
+            } else
+                _error.SetError(control, "");
+        }
+    }
 }

@@ -17,7 +17,7 @@ namespace Itse._1430.MovieLib.Ui
 
         public MainForm()
         {
-            InitializeComponent();
+            InitializeComponent();      // designer code goes here (initalized all the fields - propterty function) - initializes data
         }
         #endregion
 

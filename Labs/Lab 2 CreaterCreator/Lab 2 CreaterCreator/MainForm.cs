@@ -30,7 +30,7 @@ namespace Lab_2_CreaterCreator
 			//_listCharacters.DisplayMember = "Profession";
 			RefreshCharacters();
 		}
-
+		
 		#region Event Handlers
 
 		private void onExit(object sender, EventArgs e)

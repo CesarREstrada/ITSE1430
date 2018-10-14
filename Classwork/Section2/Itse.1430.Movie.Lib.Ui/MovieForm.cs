@@ -51,7 +51,7 @@ namespace Itse._1430.MovieLib.Ui
         private int GetIn32 ( TextBox textBox)
         {
             if (String.IsNullOrEmpty(textBox.Text))
-                return -1;
+                return -1;							// this was set originally to zero
 
             if (Int32.TryParse(textBox.Text, out var value))
                 return value;

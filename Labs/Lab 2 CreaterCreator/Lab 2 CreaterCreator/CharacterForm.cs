@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CharacterCreator;
+using System.Collections;
 
 namespace Lab_2_CreaterCreator
 {
@@ -18,19 +19,76 @@ namespace Lab_2_CreaterCreator
 		public CharacterForm()
 		{
 			InitializeComponent();
+
+			//// profession
+			//List<Character> professions = new List<Character>();
+			//professions.Add(new Character() { Profession = "Fighter" });
+			//professions.Add(new Character() { Profession = "Hunter" });
+			//professions.Add(new Character() { Profession = "Priest" });
+			//professions.Add(new Character() { Profession = "Rogue" });
+			//professions.Add(new Character() { Profession = "Wizard" });
+			//_cbxProfession.DataSource = professions;
+			//_cbxProfession.DisplayMember = "Profession";
+
+			//// Race
+			//List<Character> races = new List<Character>();
+			//races.Add(new Character() { Race = "Dwarf" });
+			//races.Add(new Character() { Race = "Elf" });
+			//races.Add(new Character() { Race = "Gnome" });
+			//races.Add(new Character() { Race = "Half Elf" });
+			//races.Add(new Character() { Race = "Human" });
+			//_cbxRace.DataSource = races;
+			//_cbxRace.DisplayMember = "Race";
+
 		}
 		#endregion
-
+	
 		public Character Character { get; set; }
 
 		private void CharacterForm_Load(object sender, EventArgs e)
 		{
+			BindProfession();
+			BindRace();
+
 			if (Character != null)
-			{
-				_txtName.Text = Character.Name;
-				
+			{						
+				_txtName.Text = Character.Name;	 				
+				_cbxProfession.Text = Character.Profession;
+				_cbxRace.Text = Character.Race;				
+
+				// Attributes
+				_txtAttrStrenght.Text = Character.Strenght.ToString();
+				_txtAttrIntelligence.Text = Character.Intelligence.ToString();
+				_txtAttrAgility.Text = Character.Agility.ToString();
+				_txtAttrConstitution.Text = Character.Constitution.ToString();
+				_txtAttrCharisma.Text = Character.Charisma.ToString();
+
 				_txtDescription.Text = Character.Description;
 			}
+		}
+
+		private void BindProfession()
+		{
+			ArrayList arrProfession = new ArrayList();
+			arrProfession.Add("Fighter");
+			arrProfession.Add("Hunter");
+			arrProfession.Add("Priest");
+			arrProfession.Add("Rogue");
+			arrProfession.Add("Wizard");
+			_cbxProfession.DataSource = arrProfession;
+			_cbxProfession.SelectedIndex = 0;
+		}
+
+		private void BindRace()
+		{
+			ArrayList arrRace = new ArrayList();
+			arrRace.Add("Dwarf");
+			arrRace.Add("Elf");
+			arrRace.Add("Gnome");
+			arrRace.Add("Half Elf");
+			arrRace.Add("Human");
+			_cbxRace.DataSource = arrRace;
+			_cbxRace.SelectedIndex = 0;
 		}
 
 		#region Event Handlers
@@ -43,22 +101,29 @@ namespace Lab_2_CreaterCreator
 
 		private void OnSave(object sender, EventArgs e)
 		{
-			var character = new Character();
+			if (!ValidateChildren())
+				return;
+
+			var character = new Character();			
 
 			// Name is required
 			character.Name = _txtName.Text;
-			if (String.IsNullOrEmpty(character.Name))
-				return;
 
+			// Profession is required
 			character.Profession = _cbxProfession.Text;
 
-			// release year
+			// Race is required
+			character.Race = _cbxRace.Text;
 
-			// Run length
+			// Attributes is required
+			character.Strenght = GetIn32(_txtAttrStrenght);
+			character.Intelligence = GetIn32(_txtAttrIntelligence);
+			character.Agility = GetIn32(_txtAttrAgility);
+			character.Constitution = GetIn32(_txtAttrConstitution);
+			character.Charisma = GetIn32(_txtAttrCharisma);
 
-			character.Description = _txtDescription.Text;
-
-			//movie.IsOwned = _chkOwned.Checked;
+			// Description optional
+			character.Description = _txtDescription.Text;			
 
 			Character = character;
 			DialogResult = DialogResult.OK;
@@ -79,5 +144,31 @@ namespace Lab_2_CreaterCreator
 			return -1;
 		}
 		#endregion
+
+		private void OnValidateName(object sender, CancelEventArgs e)
+		{
+			var control = sender as TextBox;
+
+			if (String.IsNullOrEmpty(control.Text))
+			{
+				_errors.SetError(control, "Name is required");
+				e.Cancel = true;
+			}
+			else
+				_errors.SetError(control, "");
+		}
+
+		private void OnValidatingStength(object sender, CancelEventArgs e)
+		{
+			var control = sender as TextBox;
+			var result = GetIn32(control);
+			if (result < 0 && result < 100)
+			{
+				_errors.SetError(control, "Must be between 0 and 100");
+				e.Cancel = true;
+			}
+			else
+				_errors.SetError(control, "");
+		}
 	}
 }

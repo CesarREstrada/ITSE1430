@@ -19,27 +19,6 @@ namespace Lab_2_CreaterCreator
 		public CharacterForm()
 		{
 			InitializeComponent();
-
-			//// profession
-			//List<Character> professions = new List<Character>();
-			//professions.Add(new Character() { Profession = "Fighter" });
-			//professions.Add(new Character() { Profession = "Hunter" });
-			//professions.Add(new Character() { Profession = "Priest" });
-			//professions.Add(new Character() { Profession = "Rogue" });
-			//professions.Add(new Character() { Profession = "Wizard" });
-			//_cbxProfession.DataSource = professions;
-			//_cbxProfession.DisplayMember = "Profession";
-
-			//// Race
-			//List<Character> races = new List<Character>();
-			//races.Add(new Character() { Race = "Dwarf" });
-			//races.Add(new Character() { Race = "Elf" });
-			//races.Add(new Character() { Race = "Gnome" });
-			//races.Add(new Character() { Race = "Half Elf" });
-			//races.Add(new Character() { Race = "Human" });
-			//_cbxRace.DataSource = races;
-			//_cbxRace.DisplayMember = "Race";
-
 		}
 		#endregion
 	
@@ -112,8 +91,7 @@ namespace Lab_2_CreaterCreator
 			// Profession is required
 			character.Profession = _cbxProfession.Text;
 
-			// Race is required
-			character.Race = _cbxRace.Text;
+			// Race 			character.Race = _cbxRace.Text;
 
 			// Attributes is required
 			character.Strenght = GetIn32(_txtAttrStrenght);
@@ -145,6 +123,8 @@ namespace Lab_2_CreaterCreator
 		}
 		#endregion
 
+		#region Validating
+
 		private void OnValidateName(object sender, CancelEventArgs e)
 		{
 			var control = sender as TextBox;
@@ -153,8 +133,7 @@ namespace Lab_2_CreaterCreator
 			{
 				_errors.SetError(control, "Name is required");
 				e.Cancel = true;
-			}
-			else
+			} else
 				_errors.SetError(control, "");
 		}
 
@@ -162,13 +141,64 @@ namespace Lab_2_CreaterCreator
 		{
 			var control = sender as TextBox;
 			var result = GetIn32(control);
-			if (result < 0 && result < 100)
+			if (result < 1 || 100 < result)
 			{
-				_errors.SetError(control, "Must be between 0 and 100");
+				_errors.SetError(control, "Must be between 1 and 100");
+				e.Cancel = true;
+			} else
+				_errors.SetError(control, "");
+		}
+
+		private void OnValidatingIntelligence(object sender, CancelEventArgs e)
+		{
+			var control = sender as TextBox;
+			var result = GetIn32(control);
+			if (result < 1 || 100 < result)
+			{
+				_errors.SetError(control, "Must be between 1 and 100");
+				e.Cancel = true;
+			} else
+				_errors.SetError(control, "");
+		}
+		#endregion
+
+		private void OnValidatingAgility(object sender, CancelEventArgs e)
+		{
+			var control = sender as TextBox;
+			var result = GetIn32(control);
+			if (result < 1 || 100 < result)
+			{
+				_errors.SetError(control, "Must be between 1 and 100");
 				e.Cancel = true;
 			}
 			else
 				_errors.SetError(control, "");
 		}
+
+		private void OnValidatingConstitution(object sender, CancelEventArgs e)
+		{
+			var control = sender as TextBox;
+			var result = GetIn32(control);
+			if (result < 1 || 100 < result)
+			{
+				_errors.SetError(control, "Must be between 1 and 100");
+				e.Cancel = true;
+			}
+			else
+				_errors.SetError(control, "");
+		}
+
+		private void OnValidatingCharisma(object sender, CancelEventArgs e)
+		{
+			var control = sender as TextBox;
+			var result = GetIn32(control);
+			if (result < 1 || 100 < result)
+			{
+				_errors.SetError(control, "Must be between 1 and 100");
+				e.Cancel = true;
+			}
+			else
+				_errors.SetError(control, "");
+		}	
 	}
 }

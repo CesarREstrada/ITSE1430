@@ -26,8 +26,7 @@ namespace Lab_2_CreaterCreator
 		{
 			base.OnLoad(e);
 
-			_listCharacters.DisplayMember = "Name";
-			//_listCharacters.DisplayMember = "Profession";
+			_listCharacters.DisplayMember = "Name";			
 			RefreshCharacters();
 		}
 		
@@ -35,7 +34,7 @@ namespace Lab_2_CreaterCreator
 
 		private void onExit(object sender, EventArgs e)
 		{
-			if (MessageBox.Show("Are you sure you want to EXIT?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
+			if (MessageBox.Show("Are you sure you want to EXIT?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
 				return;
 
 			Close();
@@ -46,14 +45,11 @@ namespace Lab_2_CreaterCreator
 			var form = new CharacterForm();
 			if (form.ShowDialog(this) == DialogResult.Cancel)
 				return;
-			//Character = form.Character;
-
-			// Add to database and refresh
+			
 			_database.Add(form.Character);
 			RefreshCharacters();
 		}
-		//private Character Character;
-
+		
 		private void OnEditCharacter(object sender, EventArgs e)
 		{
 			EditCharacter();
@@ -77,9 +73,18 @@ namespace Lab_2_CreaterCreator
 
 		#region Private Members
 
-		private void DeleteCharacter()  // you still have to display character being deleted ****************************
+		private void DeleteCharacter()
 		{
-			if (MessageBox.Show("Are you sure you want to DELETE?", "Delete", MessageBoxButtons.YesNo) == DialogResult.No)
+			// Get selected name, if any
+			var itemName = GetSelectedCharacter();
+			if (itemName == null)
+				return;
+
+			// Show form with selected name
+			var form = new CharacterForm();
+			form.Character = itemName;
+		
+			if (MessageBox.Show($"Are you sure you want to DELETE {itemName.Name}?", "Delete Character", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
 				return;
 
 			// Get selected movie, if any
@@ -94,12 +99,12 @@ namespace Lab_2_CreaterCreator
 
 		private void EditCharacter()
 		{
-			// Get selected movie, if any
+			// Get selected name, if any
 			var item = GetSelectedCharacter();
 			if (item == null)
 				return;
 
-			// Show form wit selected movie
+			// Show form with selected name
 			var form = new CharacterForm();
 			form.Character = item;
 			if (form.ShowDialog(this) == DialogResult.Cancel)

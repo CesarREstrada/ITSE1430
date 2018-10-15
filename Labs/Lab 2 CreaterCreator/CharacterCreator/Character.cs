@@ -15,7 +15,7 @@ namespace CharacterCreator
 			get { return _name ?? ""; } // string get ()
 			set { _name = value; }
 		}
-		// Backing field for name
+		// Backing field for Name
 		private string _name = "";
 
 		public string Profession { get; set; }	
@@ -23,7 +23,7 @@ namespace CharacterCreator
 		public string Race { get; set; }
 
 		// Attributes
-		public int Strenght { get; set; }
+		public int Strenght { get; set; } = 50;
 
 		public int Intelligence { get; set; } = 50;
 

@@ -111,7 +111,7 @@
 			this._txtName.Location = new System.Drawing.Point(136, 21);
 			this._txtName.Name = "_txtName";
 			this._txtName.Size = new System.Drawing.Size(181, 22);
-			this._txtName.TabIndex = 5;
+			this._txtName.TabIndex = 0;
 			this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateName);
 			// 
 			// _cbxProfession
@@ -125,7 +125,7 @@
 			this._cbxProfession.MaxDropDownItems = 5;
 			this._cbxProfession.Name = "_cbxProfession";
 			this._cbxProfession.Size = new System.Drawing.Size(181, 24);
-			this._cbxProfession.TabIndex = 6;
+			this._cbxProfession.TabIndex = 1;
 			// 
 			// _cbxRace
 			// 
@@ -136,7 +136,7 @@
 			this._cbxRace.Location = new System.Drawing.Point(136, 101);
 			this._cbxRace.Name = "_cbxRace";
 			this._cbxRace.Size = new System.Drawing.Size(181, 24);
-			this._cbxRace.TabIndex = 7;
+			this._cbxRace.TabIndex = 2;
 			// 
 			// _txtDescription
 			// 
@@ -146,17 +146,17 @@
 			this._txtDescription.Location = new System.Drawing.Point(136, 306);
 			this._txtDescription.Multiline = true;
 			this._txtDescription.Name = "_txtDescription";
-			this._txtDescription.Size = new System.Drawing.Size(181, 26);
-			this._txtDescription.TabIndex = 9;
+			this._txtDescription.Size = new System.Drawing.Size(181, 80);
+			this._txtDescription.TabIndex = 8;
 			// 
 			// _btnSave
 			// 
 			this._btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this._btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this._btnSave.Location = new System.Drawing.Point(99, 362);
+			this._btnSave.Location = new System.Drawing.Point(99, 403);
 			this._btnSave.Name = "_btnSave";
 			this._btnSave.Size = new System.Drawing.Size(99, 35);
-			this._btnSave.TabIndex = 10;
+			this._btnSave.TabIndex = 9;
 			this._btnSave.Text = "Save";
 			this._btnSave.UseVisualStyleBackColor = true;
 			this._btnSave.Click += new System.EventHandler(this.OnSave);
@@ -165,10 +165,10 @@
 			// 
 			this._btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this._btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this._btnCancel.Location = new System.Drawing.Point(218, 362);
+			this._btnCancel.Location = new System.Drawing.Point(218, 403);
 			this._btnCancel.Name = "_btnCancel";
 			this._btnCancel.Size = new System.Drawing.Size(99, 35);
-			this._btnCancel.TabIndex = 11;
+			this._btnCancel.TabIndex = 10;
 			this._btnCancel.Text = "Cancel";
 			this._btnCancel.UseVisualStyleBackColor = true;
 			this._btnCancel.Click += new System.EventHandler(this.OnCancel);
@@ -225,7 +225,7 @@
 			this._txtAttrStrenght.Location = new System.Drawing.Point(247, 146);
 			this._txtAttrStrenght.Name = "_txtAttrStrenght";
 			this._txtAttrStrenght.Size = new System.Drawing.Size(70, 22);
-			this._txtAttrStrenght.TabIndex = 17;
+			this._txtAttrStrenght.TabIndex = 3;
 			this._txtAttrStrenght.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingStength);
 			// 
 			// _txtAttrIntelligence
@@ -235,7 +235,8 @@
 			this._txtAttrIntelligence.Location = new System.Drawing.Point(247, 175);
 			this._txtAttrIntelligence.Name = "_txtAttrIntelligence";
 			this._txtAttrIntelligence.Size = new System.Drawing.Size(70, 22);
-			this._txtAttrIntelligence.TabIndex = 18;
+			this._txtAttrIntelligence.TabIndex = 4;
+			this._txtAttrIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingIntelligence);
 			// 
 			// _txtAttrAgility
 			// 
@@ -244,7 +245,8 @@
 			this._txtAttrAgility.Location = new System.Drawing.Point(247, 204);
 			this._txtAttrAgility.Name = "_txtAttrAgility";
 			this._txtAttrAgility.Size = new System.Drawing.Size(70, 22);
-			this._txtAttrAgility.TabIndex = 19;
+			this._txtAttrAgility.TabIndex = 5;
+			this._txtAttrAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAgility);
 			// 
 			// _txtAttrConstitution
 			// 
@@ -253,7 +255,8 @@
 			this._txtAttrConstitution.Location = new System.Drawing.Point(247, 233);
 			this._txtAttrConstitution.Name = "_txtAttrConstitution";
 			this._txtAttrConstitution.Size = new System.Drawing.Size(70, 22);
-			this._txtAttrConstitution.TabIndex = 20;
+			this._txtAttrConstitution.TabIndex = 6;
+			this._txtAttrConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingConstitution);
 			// 
 			// _txtAttrCharisma
 			// 
@@ -262,7 +265,8 @@
 			this._txtAttrCharisma.Location = new System.Drawing.Point(247, 262);
 			this._txtAttrCharisma.Name = "_txtAttrCharisma";
 			this._txtAttrCharisma.Size = new System.Drawing.Size(70, 22);
-			this._txtAttrCharisma.TabIndex = 21;
+			this._txtAttrCharisma.TabIndex = 7;
+			this._txtAttrCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingCharisma);
 			// 
 			// _errors
 			// 
@@ -274,7 +278,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-			this.ClientSize = new System.Drawing.Size(352, 428);
+			this.ClientSize = new System.Drawing.Size(352, 457);
 			this.ControlBox = false;
 			this.Controls.Add(this._txtAttrCharisma);
 			this.Controls.Add(this._txtAttrConstitution);

@@ -31,17 +31,22 @@ namespace Itse._1430.MovieLib.Ui
             if (!ValidateChildren())
                 return;
 
-           var movie = new Movie();
-            // var movie2 = new Movie();           //creates a new movie out of scope of 1st movie
-            //var name = movie2.GetName();        // strings start off as NULL
+            //var movie = new Movie();            
+            //movie.Name = _txtName.Text;           
+            //movie.Description = _txtDescription.Text;           
+            //movie.ReleaseYear = GetIn32(_txtReleaseYear);                
+            //movie.RunLenght = GetIn32(_txtRunLenght);           
+            //movie.IsOwned = _chkOwned.Checked;
 
-            // Name is required
-            movie.Name = _txtName.Text;           
-            movie.Description = _txtDescription.Text;           
-            movie.ReleaseYear = GetIn32(_txtReleaseYear);                
-            movie.RunLenght = GetIn32(_txtRunLenght);           
-            movie.IsOwned = _chkOwned.Checked;
-            
+            // Initializer syntax           
+            var movie = new Movie() {                           // only works in the context of the new             
+                Name = _txtName.Text,           
+                Description = _txtDescription.Text,           
+                ReleaseYear = GetIn32(_txtReleaseYear),                
+                RunLenght = GetIn32(_txtRunLenght),           
+                IsOwned = _chkOwned.Checked,
+            }; 
+
             Movie = movie;
             DialogResult = DialogResult.OK;  // if they click save we return ok
             Close();

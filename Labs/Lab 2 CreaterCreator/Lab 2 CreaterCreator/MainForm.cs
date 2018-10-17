@@ -51,7 +51,7 @@ namespace Lab_2_CreaterCreator
 		}
 		
 		private void OnEditCharacter(object sender, EventArgs e)
-		{
+		{			
 			EditCharacter();
 		}
 
@@ -99,6 +99,8 @@ namespace Lab_2_CreaterCreator
 
 		private void EditCharacter()
 		{
+			//CharacterForm.ActiveForm.Text = "Edit Character";
+
 			// Get selected name, if any
 			var item = GetSelectedCharacter();
 			if (item == null)
@@ -112,7 +114,7 @@ namespace Lab_2_CreaterCreator
 
 			// Update database and refresh
 			_database.Edit(item.Name, form.Character);
-			RefreshCharacters();
+			RefreshCharacters();			
 		}
 
 		private void RefreshCharacters()

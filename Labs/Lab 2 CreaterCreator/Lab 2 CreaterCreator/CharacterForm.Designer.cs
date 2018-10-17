@@ -226,7 +226,8 @@
 			this._txtAttrStrenght.Name = "_txtAttrStrenght";
 			this._txtAttrStrenght.Size = new System.Drawing.Size(70, 22);
 			this._txtAttrStrenght.TabIndex = 3;
-			this._txtAttrStrenght.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingStength);
+			this._txtAttrStrenght.Text = "50";
+			this._txtAttrStrenght.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingStrength);
 			// 
 			// _txtAttrIntelligence
 			// 
@@ -236,6 +237,7 @@
 			this._txtAttrIntelligence.Name = "_txtAttrIntelligence";
 			this._txtAttrIntelligence.Size = new System.Drawing.Size(70, 22);
 			this._txtAttrIntelligence.TabIndex = 4;
+			this._txtAttrIntelligence.Text = "50";
 			this._txtAttrIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingIntelligence);
 			// 
 			// _txtAttrAgility
@@ -246,6 +248,7 @@
 			this._txtAttrAgility.Name = "_txtAttrAgility";
 			this._txtAttrAgility.Size = new System.Drawing.Size(70, 22);
 			this._txtAttrAgility.TabIndex = 5;
+			this._txtAttrAgility.Text = "50";
 			this._txtAttrAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAgility);
 			// 
 			// _txtAttrConstitution
@@ -256,6 +259,7 @@
 			this._txtAttrConstitution.Name = "_txtAttrConstitution";
 			this._txtAttrConstitution.Size = new System.Drawing.Size(70, 22);
 			this._txtAttrConstitution.TabIndex = 6;
+			this._txtAttrConstitution.Text = "50";
 			this._txtAttrConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingConstitution);
 			// 
 			// _txtAttrCharisma
@@ -266,6 +270,7 @@
 			this._txtAttrCharisma.Name = "_txtAttrCharisma";
 			this._txtAttrCharisma.Size = new System.Drawing.Size(70, 22);
 			this._txtAttrCharisma.TabIndex = 7;
+			this._txtAttrCharisma.Text = "50";
 			this._txtAttrCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingCharisma);
 			// 
 			// _errors

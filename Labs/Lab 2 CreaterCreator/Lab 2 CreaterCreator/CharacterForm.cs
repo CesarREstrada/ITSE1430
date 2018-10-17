@@ -30,19 +30,20 @@ namespace Lab_2_CreaterCreator
 			BindRace();
 
 			if (Character != null)
-			{						
+			{		
+				
 				_txtName.Text = Character.Name;	 				
 				_cbxProfession.Text = Character.Profession;
-				_cbxRace.Text = Character.Race;				
+				_cbxRace.Text = Character.Race;
 
-				// Attributes
+				// Attributes				
 				_txtAttrStrenght.Text = Character.Strenght.ToString();
 				_txtAttrIntelligence.Text = Character.Intelligence.ToString();
 				_txtAttrAgility.Text = Character.Agility.ToString();
 				_txtAttrConstitution.Text = Character.Constitution.ToString();
 				_txtAttrCharisma.Text = Character.Charisma.ToString();
 
-				_txtDescription.Text = Character.Description;
+				_txtDescription.Text = Character.Description;				
 			}
 		}
 
@@ -83,24 +84,19 @@ namespace Lab_2_CreaterCreator
 			if (!ValidateChildren())
 				return;
 
-			var character = new Character();			
+			var character = new Character();
+			
+			character.Name = _txtName.Text;			
+			character.Profession = _cbxProfession.Text;			
+			character.Race = _cbxRace.Text;
 
-			// Name is required
-			character.Name = _txtName.Text;
-
-			// Profession is required
-			character.Profession = _cbxProfession.Text;
-
-			// Race 			character.Race = _cbxRace.Text;
-
-			// Attributes is required
+			// Attributes
 			character.Strenght = GetIn32(_txtAttrStrenght);
 			character.Intelligence = GetIn32(_txtAttrIntelligence);
 			character.Agility = GetIn32(_txtAttrAgility);
 			character.Constitution = GetIn32(_txtAttrConstitution);
 			character.Charisma = GetIn32(_txtAttrCharisma);
 
-			// Description optional
 			character.Description = _txtDescription.Text;			
 
 			Character = character;
@@ -137,58 +133,33 @@ namespace Lab_2_CreaterCreator
 				_errors.SetError(control, "");
 		}
 
-		private void OnValidatingStength(object sender, CancelEventArgs e)
+		private void OnValidatingStrength(object sender, CancelEventArgs e)
 		{
-			var control = sender as TextBox;
-			var result = GetIn32(control);
-			if (result < 1 || 100 < result)
-			{
-				_errors.SetError(control, "Must be between 1 and 100");
-				e.Cancel = true;
-			} else
-				_errors.SetError(control, "");
+			ValidatingAttributes(sender, e);
 		}
 
 		private void OnValidatingIntelligence(object sender, CancelEventArgs e)
 		{
-			var control = sender as TextBox;
-			var result = GetIn32(control);
-			if (result < 1 || 100 < result)
-			{
-				_errors.SetError(control, "Must be between 1 and 100");
-				e.Cancel = true;
-			} else
-				_errors.SetError(control, "");
+			ValidatingAttributes(sender, e);
 		}
 		#endregion
 
 		private void OnValidatingAgility(object sender, CancelEventArgs e)
 		{
-			var control = sender as TextBox;
-			var result = GetIn32(control);
-			if (result < 1 || 100 < result)
-			{
-				_errors.SetError(control, "Must be between 1 and 100");
-				e.Cancel = true;
-			}
-			else
-				_errors.SetError(control, "");
+			ValidatingAttributes(sender, e);
 		}
 
 		private void OnValidatingConstitution(object sender, CancelEventArgs e)
 		{
-			var control = sender as TextBox;
-			var result = GetIn32(control);
-			if (result < 1 || 100 < result)
-			{
-				_errors.SetError(control, "Must be between 1 and 100");
-				e.Cancel = true;
-			}
-			else
-				_errors.SetError(control, "");
+			ValidatingAttributes(sender, e);
 		}
 
 		private void OnValidatingCharisma(object sender, CancelEventArgs e)
+		{
+			ValidatingAttributes(sender, e);
+		}
+
+		private void ValidatingAttributes(object sender, CancelEventArgs e)
 		{
 			var control = sender as TextBox;
 			var result = GetIn32(control);
@@ -199,6 +170,6 @@ namespace Lab_2_CreaterCreator
 			}
 			else
 				_errors.SetError(control, "");
-		}	
+		}
 	}
 }

@@ -102,12 +102,12 @@ namespace CharacterCreator
 		}
 
 		// Gets some movies to see database with
-		private static Character[] GetSeedCharcters(bool seed)		//******************************************************** this is not right **************************
+		private static Character[] GetSeedCharcters(bool seed)		
 		{
 			if (!seed)
 				return new Character[0];
 
-			var characters = new Character[0];  			
+			var characters = new Character[0];
 
 			return characters;
 		}	

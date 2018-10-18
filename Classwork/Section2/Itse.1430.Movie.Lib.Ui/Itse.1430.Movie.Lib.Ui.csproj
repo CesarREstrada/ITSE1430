@@ -91,6 +91,10 @@
       <Project>{4022b2d1-742e-4a41-8986-21abc73b94e7}</Project>
       <Name>Itse1430.Movie.Lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Itse1430MovieLib.Memory\Itse1430MovieLib.Memory.csproj">
+      <Project>{54c28db4-3b84-4e4c-8953-0fa1941120c4}</Project>
+      <Name>Itse1430MovieLib.Memory</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -66,7 +66,6 @@
             this.eExitToolStripMenuItem.Name = "eExitToolStripMenuItem";
             this.eExitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.eExitToolStripMenuItem.Text = "E&xit";
-            this.eExitToolStripMenuItem.Click += new System.EventHandler(this.eExitToolStripMenuItem_Click);
             // 
             // movieToolStripMenuItem
             // 

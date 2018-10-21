@@ -141,8 +141,7 @@ namespace Lab_2_CreaterCreator
 		private void OnValidatingIntelligence(object sender, CancelEventArgs e)
 		{
 			ValidatingAttributes(sender, e);
-		}
-		#endregion
+		}		
 
 		private void OnValidatingAgility(object sender, CancelEventArgs e)
 		{
@@ -171,5 +170,6 @@ namespace Lab_2_CreaterCreator
 			else
 				_errors.SetError(control, "");
 		}
+		#endregion
 	}
 }

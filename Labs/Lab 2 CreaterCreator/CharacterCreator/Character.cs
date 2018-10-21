@@ -41,8 +41,5 @@ namespace CharacterCreator
 		}
 		// Backing field for Description
 		private string _description;
-
-
-		//public object Items;
 	}
 }

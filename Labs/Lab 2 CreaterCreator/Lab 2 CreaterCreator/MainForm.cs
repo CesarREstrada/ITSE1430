@@ -34,7 +34,8 @@ namespace Lab_2_CreaterCreator
 
 		private void onExit(object sender, EventArgs e)
 		{
-			if (MessageBox.Show("Are you sure you want to EXIT?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+			if (MessageBox.Show("Are you sure you want to EXIT?", "Close", MessageBoxButtons.YesNo, 
+				MessageBoxIcon.Question) == DialogResult.No)
 				return;
 
 			Close();
@@ -67,7 +68,8 @@ namespace Lab_2_CreaterCreator
 
 		private void OnHelpAbout(object sender, EventArgs e)
 		{
-			MessageBox.Show(this, "Cesar Estrada\n ITSE-1430 MW 5pm\n Character Creator", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show(this, "Cesar Estrada\n ITSE-1430 MW 5pm\n Character Creator", "About",
+							MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 		#endregion
 
@@ -99,8 +101,6 @@ namespace Lab_2_CreaterCreator
 
 		private void EditCharacter()
 		{
-			//CharacterForm.ActiveForm.Text = "Edit Character";
-
 			// Get selected name, if any
 			var item = GetSelectedCharacter();
 			if (item == null)

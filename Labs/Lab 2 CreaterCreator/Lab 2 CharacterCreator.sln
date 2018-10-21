@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab 2 CreaterCreator", "Lab 2 CreaterCreator\Lab 2 CreaterCreator.csproj", "{455F3B08-7E23-4273-961B-E3817958B630}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab 2 CharactorCreator", "Lab 2 CreaterCreator\Lab 2 CharactorCreator.csproj", "{455F3B08-7E23-4273-961B-E3817958B630}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterCreator", "CharacterCreator\CharacterCreator.csproj", "{2CE887AA-CE6C-4A7C-A506-B0B5EE04048E}"
 EndProject

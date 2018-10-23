@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 // this is where your data for your creatures in programming assignment 2
 namespace Itse1430.MovieLib
 {
-    public class Movie
+    public class Movie : IValidatableObject        // interface  -- movie implements IvalidatebaleObject
     {
         // in classes we don't want to use fields(variable) we want to use methods(functions) to validate and store data
         public string Name                  // sample on properties
@@ -71,7 +72,7 @@ namespace Itse1430.MovieLib
         //        _releaseYear = value;
         //}
 
-        public int RunLenght { get; set; }      // this is a auto property same as code below
+        public int RunLength { get; set; }      // this is a auto property same as code below
 
         //private int _runLenght;       // no longer need this field becuase the auto property generates one
 
@@ -122,5 +123,19 @@ namespace Itse1430.MovieLib
         }
 
         public bool IsOwned { get; set; }
+
+        public IEnumerable<ValidationResult> Validate( ValidationContext validationContext ) // this is a interface
+        {
+            //var results = new List<ValidationResult>();
+            
+            if (String.IsNullOrEmpty(Name))
+                yield return new ValidationResult("Name is required.", new[] { nameof(Name) }); // [] creates a new array
+
+            if (ReleaseYear < 1900)
+                yield return new ValidationResult("Release year mest be >= 1900", new[] { nameof(ReleaseYear) });
+
+            if (RunLength < 0)
+                yield return new ValidationResult("Run length must be >= 0", new[] { nameof(RunLength) });
+        }
     }
 }

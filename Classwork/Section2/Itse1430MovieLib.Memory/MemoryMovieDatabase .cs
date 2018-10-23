@@ -20,19 +20,21 @@ namespace Itse1430.MovieLib.Memory
 
         /// <summary>Gets all the movies.</summary>
         /// <returns>The list of movies.</returns>
-        protected override Movie[] GetAllCore()
+        protected override IEnumerable<Movie> GetAllCore()
         {
-            //How many movies do we have
-            var count = _items.Count;
+            return _items;
 
-            var temp = new Movie[count];
-            var index = 0;
-            foreach (var movie in _items)
-            {
-                temp[index++] = movie;
-            };
+            ////How many movies do we have
+            //var count = _items.Count;
 
-            return temp;
+            //var temp = new Movie[count];
+            //var index = 0;
+            //foreach (var movie in _items)
+            //{
+            //    temp[index++] = movie;
+            //};
+
+            //return temp;
         }
 
         /// <summary>Edits an existing movie.</summary>

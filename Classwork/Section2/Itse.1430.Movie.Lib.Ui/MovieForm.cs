@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Itse1430.Movie.Lib;
 using Itse1430.MovieLib;
 
 namespace Itse._1430.MovieLib.Ui
@@ -43,9 +45,20 @@ namespace Itse._1430.MovieLib.Ui
                 Name = _txtName.Text,           
                 Description = _txtDescription.Text,           
                 ReleaseYear = GetIn32(_txtReleaseYear),                
-                RunLenght = GetIn32(_txtRunLenght),           
+                RunLength = GetIn32(_txtRunLenght),           
                 IsOwned = _chkOwned.Checked,
-            }; 
+            };
+
+            //Validator.TryValidateObject()
+            var results = ObjectValidator.Validate(movie);
+            foreach (var result in results)
+            //if (results.Count > 0)
+            {
+                //var firstMessage = results[0];                
+                MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
+                                MessageBoxButtons.OK);
+                return;
+            };
 
             Movie = movie;
             DialogResult = DialogResult.OK;  // if they click save we return ok
@@ -72,7 +85,7 @@ namespace Itse._1430.MovieLib.Ui
                 _txtName.Text = Movie.Name;
                 _txtDescription.Text = Movie.Description;
                 _txtReleaseYear.Text = Movie.ReleaseYear.ToString();
-                _txtRunLenght.Text = Movie.RunLenght.ToString();
+                _txtRunLenght.Text = Movie.RunLength.ToString();
                 _chkOwned.Checked = Movie.IsOwned;
             };
 

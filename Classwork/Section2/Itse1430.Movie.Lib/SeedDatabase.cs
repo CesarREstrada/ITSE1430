@@ -7,19 +7,19 @@ using Itse1430.MovieLib;
 
 namespace Itse1430.MovieLib
 {
-    public class SeedDatabase
+    public static class SeedDatabase
     {
         public static void Seed( MovieDatabase database )
         {
             var movies = new[] {
                 new Movie() {
                     Name = "Jaws",
-                    RunLenght = 120,
+                    RunLength = 120,
                     ReleaseYear = 1977,
                 },
                 new Movie() {
                     Name = "What About Bob?",
-                    RunLenght = 96,
+                    RunLength = 96,
                     ReleaseYear = 2004,
                 },
             };

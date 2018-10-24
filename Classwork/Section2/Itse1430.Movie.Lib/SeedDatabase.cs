@@ -7,9 +7,9 @@ using Itse1430.MovieLib;
 
 namespace Itse1430.MovieLib
 {
-    public static class SeedDatabase
+    public static class MovieDatabaseExtensions
     {
-        public static void Seed( MovieDatabase database )
+        public static void Seed( this IMovieDatabase source )
         {
             var movies = new[] {
                 new Movie() {
@@ -23,13 +23,13 @@ namespace Itse1430.MovieLib
                     ReleaseYear = 2004,
                 },
             };
-            Seed(database, movies);
+            Seed(source, movies);
         }
 
-        public static void Seed( MovieDatabase database, Movie[] movies )
+        public static void Seed( this IMovieDatabase source, Movie[] movies )
         {
             foreach (var movie in movies)
-                database.Add(movie);
+                source.Add(movie);
         }
     }
 }

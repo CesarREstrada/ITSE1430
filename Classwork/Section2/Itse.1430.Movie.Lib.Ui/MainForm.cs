@@ -37,7 +37,8 @@ namespace Itse._1430.MovieLib.Ui
 
            //Seed database
            //var seed = new SeedDatabase();
-            SeedDatabase.Seed(_database);
+           //SeedDatabase.Seed(_database);
+            _database.Seed(); // its an instance member calls the SeedDatabase adding additional functionallity to a _database (.Seed) extention method
 
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
@@ -133,10 +134,11 @@ namespace Itse._1430.MovieLib.Ui
 
             _listMovies.Items.Clear();
 
-            //TODO: Hard way
-            foreach (var movie in movies)
-                _listMovies.Items.Add(movie);
-            //_listMovies.Items.AddRange(movies);
+           //TODO: Hard way
+           // foreach (var movie in movies)
+           //     _listMovies.Items.Add(movie);
+
+           _listMovies.Items.AddRange(movies.ToArray());
         }
 
         private Movie GetSelectedMovie()
@@ -144,7 +146,7 @@ namespace Itse._1430.MovieLib.Ui
             return _listMovies.SelectedItem as Movie;
         }
 
-        private MovieDatabase _database = new MemoryMovieDatabase();
+        private IMovieDatabase _database = new MemoryMovieDatabase();
 
         #endregion        
     }

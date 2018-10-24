@@ -126,6 +126,7 @@ namespace Itse1430.MovieLib
 
         public IEnumerable<ValidationResult> Validate( ValidationContext validationContext ) // this is a interface
         {
+            // Using iterator syntax instead of List<T>
             //var results = new List<ValidationResult>();
             
             if (String.IsNullOrEmpty(Name))

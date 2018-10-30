@@ -14,8 +14,11 @@ namespace Itse1430.MovieLib
         // in classes we don't want to use fields(variable) we want to use methods(functions) to validate and store data
         public string Name                  // sample on properties
         {                                                                                       // lab 2 ****************************************
-            get { return _name ?? ""; }       // string get ()
-            set { _name = value; }      // void set (string value)
+            //get { return _name ?? ""; }       // string get ()
+            get => _name ?? ""; // ---> expression bodies           lambda ****************************
+
+            //set { _name = value; }      // void set (string value)
+            set => _name = value;
         }
         private string _name = "";   // initializer expression     // make it private to protect
 
@@ -116,11 +119,14 @@ namespace Itse1430.MovieLib
                                                         // 3) if return type is private cannot have public for get or set
                                                         // 4) get or set can either private but only one
                                                         // 5) if getter is private and setter is public is used for passwords
-       
-        public bool IsColor                     // calculated properties ...... will not have a setter
-        {
-            get { return ReleaseYear > 1940; }  // this property is deterministic
-        }
+
+
+        // public bool IsColor = ReleaseYear > 1940; (anyone can change)
+        public bool IsColor => ReleaseYear > 1940;  //Lambda(read only property)                   // calculated properties ...... will not have a setter
+        //{
+        //    //get { return ReleaseYear > 1940; }  // this property is deterministic
+        //    get => ReleaseYear > 1940;  // Lambda ****************************************************
+        //}
 
         public bool IsOwned { get; set; }
 

@@ -11,13 +11,13 @@ namespace Itse1430.MovieLib.Memory
     {
         /// <summary>Adds a movie to the database.</summary>
         /// <param name="movie">The movie to add.</param>
-        protected override void AddCore( Movie movie )
-        {
-            _items.Add(movie);
-            //var index = FindNextFreeIndex();
-            //if (index >= 0)
-            //    _movies[index] = movie;
-        }
+        protected override void AddCore( Movie movie ) => _items.Add(movie);     // Lamba
+        //{
+        //    _items.Add(movie);
+        //    //var index = FindNextFreeIndex();
+        //    //if (index >= 0)
+        //    //    _movies[index] = movie;
+        //}
 
         /// <summary>Gets all the movies.</summary>
         /// <returns>The list of movies.</returns>
@@ -26,43 +26,61 @@ namespace Itse1430.MovieLib.Memory
             // var i = _items.ToArray();
             // return _items;
 
-            return _items.Select(Clone);            // you will this alot 
 
-            //foreach (var item in _items)
-            //    yield return new Movie()
-            //    {
-            //        Name = item.Name,
-            //        Description = item.Description,
-            //        ReleaseYear = item.ReleaseYear,
-            //        RunLength = item.RunLength,
-            //        IsOwned = item.IsOwned
-            //    };
+            // Use LINQ to clone  movies
+            return from item in _items
+                //where
+                select new Movie() {               
+                    Name = item.Name,
+                    Description = item.Description,
+                    ReleaseYear = item.ReleaseYear,
+                    RunLength = item.RunLength,
+                    IsOwned = item.IsOwned
+                };
 
-            ////How many movies do we have
-            //var count = _items.Count;
+                //return _items.Select(item => new Movie()
+                //{
+                //    Name = item.Name,
+                //    Description = item.Description,
+                //    ReleaseYear = item.ReleaseYear,
+                //    RunLength = item.RunLength,
+                //    IsOwned = item.IsOwned
+                //});
 
-            //var temp = new Movie[count];
-            //var index = 0;
-            //foreach (var movie in _items)
-            //{
-            //    temp[index++] = movie;
-            //};
+                //foreach (var item in _items)
+                //    yield return new Movie()
+                //    {
+                //        Name = item.Name,
+                //        Description = item.Description,
+                //        ReleaseYear = item.ReleaseYear,
+                //        RunLength = item.RunLength,
+                //        IsOwned = item.IsOwned
+                //    };
 
-            //return temp;
-        }
+                ////How many movies do we have
+                //var count = _items.Count;
 
-        // helper method
-        private Movie Clone( Movie item )
-        {
-            return new Movie()
-            {
-                Name = item.Name,
-                Description = item.Description,
-                ReleaseYear = item.ReleaseYear,
-                RunLength = item.RunLength,
-                IsOwned = item.IsOwned
-            };
-        }
+                //var temp = new Movie[count];
+                //var index = 0;
+                //foreach (var movie in _items)
+                //{
+                //    temp[index++] = movie;
+                //};
+
+                //return temp;
+            }
+
+        // helper method  --  TODO: Temporary method to clone a movie
+        //private Movie Clone( Movie item )
+        //{
+        //    return new Movie() {
+        //        Name = item.Name,
+        //        Description = item.Description,
+        //        ReleaseYear = item.ReleaseYear,
+        //        RunLength = item.RunLength,
+        //        IsOwned = item.IsOwned
+        //    };
+        //}
 
         /// <summary>Edits an existing movie.</summary>
         /// <param name="name">The movie to edit.</param>
@@ -100,20 +118,26 @@ namespace Itse1430.MovieLib.Memory
             //        return movie;
             //};
 
+            //Use extension methods to get first item
             //return _items.Where(IsName).FirstOrDefault();       // can return null
 
-            return _items.FirstOrDefault(IsName);
+            // LAMBDA****** the complier takes this and make a helper method (with closure "name,")
+            //return _items.FirstOrDefault(m => String.Compare(name, m.Name, true) == 0); ********************* this ones better
+            return (from m in _items
+                   where String.Compare(name, m.Name, true) == 0
+                   select m).FirstOrDefault();
 
             //return null;
         }
 
-        private bool IsName ( Movie movie )
-        {
-            if (String.Compare(name, movie.Name, true) == 0)
-                return true;
+        //TODO: Temporary helper method to find movie by name
+        //private bool IsName ( Movie movie )
+        //{
+        //    if (String.Compare(name, movie.Name, true) == 0)
+        //        return true;
 
-            return false;
-        }
+        //    return false;
+        //}
 
         //private Movie[] _movies = new Movie[100];
         private List<Movie> _items = new List<Movie>();

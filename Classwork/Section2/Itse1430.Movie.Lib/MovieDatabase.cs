@@ -3,6 +3,7 @@ using System.Collections.Generic;           // list only available with this hea
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Itse1430.Movie.Lib;
 
 namespace Itse1430.MovieLib
 {
@@ -10,9 +11,14 @@ namespace Itse1430.MovieLib
     {       
         public void Add ( Movie movie)
         {
+            // crashes a system just for education purpose
+            // Validation
+            if( movie == null)
+                throw new ArgumentNullException(nameof(movie));
+            ObjectValidator.Validate(movie);
             // TODO: Validate
-            if (movie == null)
-                return;
+            //if (movie == null)
+            //   return;
 
             AddCore(movie);          
         }
@@ -28,16 +34,21 @@ namespace Itse1430.MovieLib
 
         public void Edit (string name, Movie movie)
         {
-            // TODO: Validate
-            if (String.IsNullOrEmpty(name))
-                return;
+
+            // Validate
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+            else if (name == "")
+                throw new ArgumentException("Name cannot be empty.", nameof(name));
+
             if (movie == null)
-                return;
+                throw new ArgumentNullException(nameof(movie));
+            ObjectValidator.Validate(movie);
 
             //Find movie by name
             var existing = FindByName(name);
             if (existing == null)
-                return;
+                throw new Exception("Movie not found.");
 
             EditCore(existing, movie);
         }

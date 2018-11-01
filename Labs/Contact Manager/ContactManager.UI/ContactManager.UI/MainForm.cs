@@ -58,6 +58,20 @@ namespace ContactManager.UI
 			RefreshContacts();
 		}
 
+
+		private void OnSendMessage_Click(object sender, EventArgs e)
+		{
+			// Get selected name, if any
+			var itemName = GetSelectedContact();
+			if (itemName == null)
+				return;
+
+			var form = new MessageForm();
+			if (form.ShowDialog(this) == DialogResult.Cancel)
+				return;
+
+		}
+
 		private void OnContactEdit_Click(object sender, EventArgs e)
 		{
 			EditContact();
@@ -152,8 +166,8 @@ namespace ContactManager.UI
 
 		private IContactDatabase _database = new MemoryContactDatabase();
 
+
 		#endregion
 
-		
 	}
 }

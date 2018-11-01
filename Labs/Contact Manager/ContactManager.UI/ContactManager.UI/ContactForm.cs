@@ -24,7 +24,6 @@ namespace ContactManager.UI
 		
 		public Contact Contact { get; set; }
 
-
 		private void ContactForm_Load(object sender, EventArgs e)
 		{
 			if (Contact != null)

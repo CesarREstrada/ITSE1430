@@ -35,6 +35,7 @@ namespace Itse._1430.MovieLib.Ui
         {
             base.OnLoad(e);
 
+            _database.Add(new Movie());
            //Seed database
            //var seed = new SeedDatabase();
            //SeedDatabase.Seed(_database);

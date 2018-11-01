@@ -30,7 +30,6 @@ namespace CharacterCreator.Winforms
 
 			if (Character != null)
 			{
-
 				_txtName.Text = Character.Name;
 				_cbxProfession.Text = Character.Profession;
 				_cbxRace.Text = Character.Race;

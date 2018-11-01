@@ -31,14 +31,20 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OnFileExit = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.OnHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.contactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OnContactNew = new System.Windows.Forms.ToolStripMenuItem();
 			this.OnContactEdit = new System.Windows.Forms.ToolStripMenuItem();
 			this.OnContactDelete = new System.Windows.Forms.ToolStripMenuItem();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.OnHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this._listContacts = new System.Windows.Forms.ListBox();
+			this._emailSent = new System.Windows.Forms.ListBox();
 			this.menuStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
+			this.splitContainer1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -50,7 +56,7 @@
             this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(493, 28);
+			this.menuStrip1.Size = new System.Drawing.Size(456, 28);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -66,25 +72,9 @@
 			// 
 			this.OnFileExit.Name = "OnFileExit";
 			this.OnFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-			this.OnFileExit.Size = new System.Drawing.Size(216, 26);
+			this.OnFileExit.Size = new System.Drawing.Size(161, 26);
 			this.OnFileExit.Text = "Exit";
 			this.OnFileExit.Click += new System.EventHandler(this.OnFileExit_Click);
-			// 
-			// helpToolStripMenuItem
-			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OnHelpAbout});
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-			this.helpToolStripMenuItem.Text = "&Help";
-			// 
-			// OnHelpAbout
-			// 
-			this.OnHelpAbout.Name = "OnHelpAbout";
-			this.OnHelpAbout.ShortcutKeys = System.Windows.Forms.Keys.F1;
-			this.OnHelpAbout.Size = new System.Drawing.Size(216, 26);
-			this.OnHelpAbout.Text = "About";
-			this.OnHelpAbout.Click += new System.EventHandler(this.OnHelpAbout_Click);
 			// 
 			// contactToolStripMenuItem
 			// 
@@ -99,7 +89,7 @@
 			// OnContactNew
 			// 
 			this.OnContactNew.Name = "OnContactNew";
-			this.OnContactNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+			this.OnContactNew.ShortcutKeys = System.Windows.Forms.Keys.Insert;
 			this.OnContactNew.Size = new System.Drawing.Size(216, 26);
 			this.OnContactNew.Text = "New";
 			this.OnContactNew.Click += new System.EventHandler(this.OnContactNew_Click);
@@ -119,30 +109,80 @@
 			this.OnContactDelete.Text = "Delete";
 			this.OnContactDelete.Click += new System.EventHandler(this.OnContactDelete_Click);
 			// 
-			// listBox1
+			// helpToolStripMenuItem
 			// 
-			this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.ItemHeight = 16;
-			this.listBox1.Location = new System.Drawing.Point(0, 28);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(493, 448);
-			this.listBox1.TabIndex = 1;
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OnHelpAbout});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+			this.helpToolStripMenuItem.Text = "&Help";
+			// 
+			// OnHelpAbout
+			// 
+			this.OnHelpAbout.Name = "OnHelpAbout";
+			this.OnHelpAbout.ShortcutKeys = System.Windows.Forms.Keys.F1;
+			this.OnHelpAbout.Size = new System.Drawing.Size(149, 26);
+			this.OnHelpAbout.Text = "About";
+			this.OnHelpAbout.Click += new System.EventHandler(this.OnHelpAbout_Click);
+			// 
+			// splitContainer1
+			// 
+			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+			this.splitContainer1.Name = "splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			this.splitContainer1.Panel1.Controls.Add(this._listContacts);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this._emailSent);
+			this.splitContainer1.Size = new System.Drawing.Size(456, 325);
+			this.splitContainer1.SplitterDistance = 152;
+			this.splitContainer1.TabIndex = 1;
+			// 
+			// _listContacts
+			// 
+			this._listContacts.Dock = System.Windows.Forms.DockStyle.Fill;
+			this._listContacts.FormattingEnabled = true;
+			this._listContacts.ItemHeight = 16;
+			this._listContacts.Location = new System.Drawing.Point(0, 0);
+			this._listContacts.Name = "_listContacts";
+			this._listContacts.Size = new System.Drawing.Size(152, 325);
+			this._listContacts.TabIndex = 0;
+			this._listContacts.DoubleClick += new System.EventHandler(this.OnContactDoubleClick);
+			this._listContacts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnListKeyUp);
+			// 
+			// _emailSent
+			// 
+			this._emailSent.Dock = System.Windows.Forms.DockStyle.Fill;
+			this._emailSent.FormattingEnabled = true;
+			this._emailSent.ItemHeight = 16;
+			this._emailSent.Location = new System.Drawing.Point(0, 0);
+			this._emailSent.Name = "_emailSent";
+			this._emailSent.Size = new System.Drawing.Size(300, 325);
+			this._emailSent.TabIndex = 0;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.ClientSize = new System.Drawing.Size(493, 476);
-			this.Controls.Add(this.listBox1);
+			this.ClientSize = new System.Drawing.Size(456, 353);
+			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.menuStrip1);
+			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Contact Manager";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+			this.splitContainer1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -159,7 +199,9 @@
 		private System.Windows.Forms.ToolStripMenuItem OnContactNew;
 		private System.Windows.Forms.ToolStripMenuItem OnContactEdit;
 		private System.Windows.Forms.ToolStripMenuItem OnContactDelete;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.SplitContainer splitContainer1;
+		private System.Windows.Forms.ListBox _listContacts;
+		private System.Windows.Forms.ListBox _emailSent;
 	}
 }
 

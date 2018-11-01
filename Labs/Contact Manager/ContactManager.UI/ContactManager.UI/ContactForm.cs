@@ -24,6 +24,18 @@ namespace ContactManager.UI
 		
 		public Contact Contact { get; set; }
 
+
+		private void ContactForm_Load(object sender, EventArgs e)
+		{
+			if (Contact != null)
+			{
+				_txtName.Text = Contact.Name;
+				_txtEmailAddress.Text = Contact.EmailAddress;
+			}
+		}
+		
+		#region Event Handlers
+
 		private void OnSave_Click(object sender, EventArgs e)
 		{
 			if (!ValidateChildren())
@@ -57,9 +69,9 @@ namespace ContactManager.UI
 		{
 			var control = sender as TextBox;
 
-			if (String.IsNullOrEmpty(control.Text)
+			if (String.IsNullOrEmpty(control.Text))
 			{
-				_errors.SetError(control, "Name is requried");
+				_errors.SetError(control, "Name is required");
 				e.Cancel = true;
 			} else
 				_errors.SetError(control, "");
@@ -70,9 +82,9 @@ namespace ContactManager.UI
 			var control = sender as TextBox;
 			
 
-			if (String.IsNullOrEmpty(control.Text)
+			if (String.IsNullOrEmpty(control.Text))
 			{
-				_errors.SetError(control, "Email is requried");
+				_errors.SetError(control, "Email is required");
 				e.Cancel = true;
 			}
 			else
@@ -90,5 +102,8 @@ namespace ContactManager.UI
 			{ };
 			return false;
 		}
+
+		#endregion
+				
 	}
 }

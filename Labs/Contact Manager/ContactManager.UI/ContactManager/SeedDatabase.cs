@@ -2,6 +2,7 @@
 // November 5, 2018
 // ITSE 1430 MW 5pm
 // SeedDataBase.cs
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,28 +11,49 @@ using System.Threading.Tasks;
 
 namespace ContactManager
 {
+	/// <summary>Provides extensions for <see cref="ContactDatabase"/>.</summary>
 	public static class ContactDatabaseExtensions
 	{
-		public static void Seed(this IContactDatabase source)
+		/// <summary>Seeds a database.</summary>
+		/// <param name="source">The database to seed.</param>
+		/// <remarks>
+		/// Extension method to see a database.
+		/// </remarks>
+		public static void Seed ( this IContactDatabase source )
 		{
+			//var contacts = new[] {
+			//	new Contact(){
+			//		Name = "Test1",
+			//		EmailAddress = "testemail1@gmail.com",
+			//	},
+			//	new Contact() {
+			//	Name = "Test2",
+			//	EmailAddress = "testemail2@gmail.com"
+			//	},
+			//};
+
 			var contacts = new[] {
 				new Contact(){
 					Name = "Test1",
 					EmailAddress = "testemail1@gmail.com",
-				},
-				new Contact() {
-				Name = "Test2",
-				EmailAddress = "testemail2@gmail.com"
-				},
+				},				
 			};
-			Seed(source, contacts);
+
+
+			Seed(source, contacts);	
+			//Seed(source);
 		}
 
-		public static void Seed(this IContactDatabase source, Movie[] contact)
+		/// <summary>Seeds a database.</summary>
+		/// <param name="source">The database to seed.</param>
+		/// <param name="contacts">The contacts to seed with.</param>
+		/// <remarks>
+		/// Extension method to see a database.
+		/// </remarks>
+		public static void Seed ( this IContactDatabase source, Contact[] contacts )
 		{
 			foreach (var contact in contacts)
 				source.Add(contact);
 		}
-
 	}
 }

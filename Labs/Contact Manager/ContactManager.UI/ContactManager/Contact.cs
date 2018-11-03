@@ -6,13 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactManager
 {
-    public class Contact : IValidatableObject
+	public class Contact : IValidatableObject
 	{
 		// Property to back the name field
 		public string Name
@@ -37,8 +34,11 @@ namespace ContactManager
 			if (String.IsNullOrEmpty(Name))
 				yield return new ValidationResult("Name is required.", new[] { nameof(Name) });
 
+			//if (String.Distinct().Count != String.Count())
+			//	yield return new ValidationResult("Valid is required.", new[] { nameof(EmailAddress) });
+
 			if (String.IsNullOrEmpty(EmailAddress))
-				yield return new ValidationResult("Name is required.", new[] { nameof(EmailAddress) });
+				yield return new ValidationResult("Email is required.", new[] { nameof(EmailAddress) });
 		}
 	}
 	

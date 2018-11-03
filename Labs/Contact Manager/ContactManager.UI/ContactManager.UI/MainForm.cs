@@ -2,17 +2,12 @@
 // November 5, 2018
 // ITSE 1430 MW 5pm
 // MainForm.cs
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ContactManager;
+
 using ContactManager.Memory;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ContactManager.UI
 {
@@ -32,7 +27,6 @@ namespace ContactManager.UI
 			base.OnLoad(e);
 
 			_database.Seed();
-
 			_listContacts.DisplayMember = "Name";
 			RefreshContacts();
 		}
@@ -54,22 +48,27 @@ namespace ContactManager.UI
 			if (form.ShowDialog(this) == DialogResult.Cancel)
 				return;
 
+			// validate duplicates ?????????????????????????????????????
+			//var contacts = from m in _database.GetAll()
+			//			   where 
+			//			   orderby m.Name
+			//			   select m;
+
 			_database.Add(form.Contact);
 			RefreshContacts();
 		}
 
-
 		private void OnSendMessage_Click(object sender, EventArgs e)
 		{
 			// Get selected name, if any
-			var itemName = GetSelectedContact();
-			if (itemName == null)
+			var item = GetSelectedContact();
+			if (item == null)
 				return;
 
 			var form = new MessageForm();
+			form.Contact = item;
 			if (form.ShowDialog(this) == DialogResult.Cancel)
-				return;
-
+				return;			
 		}
 
 		private void OnContactEdit_Click(object sender, EventArgs e)
@@ -153,7 +152,6 @@ namespace ContactManager.UI
 						   select m;
 
 			_listContacts.Items.Clear();
-
 			_listContacts.Items.AddRange(contacts.ToArray());
 		}
 
@@ -166,8 +164,6 @@ namespace ContactManager.UI
 
 		private IContactDatabase _database = new MemoryContactDatabase();
 
-
 		#endregion
-
 	}
 }

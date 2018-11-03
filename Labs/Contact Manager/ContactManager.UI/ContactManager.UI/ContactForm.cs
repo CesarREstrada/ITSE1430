@@ -3,15 +3,9 @@
 // ITSE 1430 MW 5pm
 // ContactForm.cs
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ContactManager;
+
 
 namespace ContactManager.UI
 {
@@ -21,7 +15,7 @@ namespace ContactManager.UI
 		{
 			InitializeComponent();
 		}
-		
+
 		public Contact Contact { get; set; }
 
 		private void ContactForm_Load(object sender, EventArgs e)
@@ -51,7 +45,7 @@ namespace ContactManager.UI
 				MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
 							   MessageBoxButtons.OK);
 				return;
-			};
+			};						
 
 			Contact = contact;
 			DialogResult = DialogResult.OK;
@@ -79,28 +73,28 @@ namespace ContactManager.UI
 		private void OnValidatingEmail(object sender, CancelEventArgs e)
 		{
 			var control = sender as TextBox;
-			
+
+			//IsValideEmail(control.Text);
 
 			if (String.IsNullOrEmpty(control.Text))
 			{
-				_errors.SetError(control, "Email is required");
-				e.Cancel = true;
+				_errors.SetError(control, "Valid email is required");
+				e.Cancel = true; //IsValideEmail(control.Text)
 			}
 			else
 				_errors.SetError(control, "");
-
 		}
 
-		bool IsValideEmail(string source)		// where does this go
-		{
-			try
-			{
-				new System.Net.Mail.MailAddress(source);
-				return true;
-			} catch
-			{ };
-			return false;
-		}
+		//bool IsValideEmail(string source)		// where does this go maybe in message for
+		//{
+		//	try
+		//	{
+		//		new System.Net.Mail.MailAddress(source);
+		//		return true;
+		//	} catch
+		//	{ };
+		//	return false;
+		//}
 
 		#endregion
 				

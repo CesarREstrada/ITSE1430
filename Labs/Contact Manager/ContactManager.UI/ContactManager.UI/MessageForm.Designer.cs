@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this._txtName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this._txtSubject = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
@@ -37,7 +37,7 @@
 			this.OnSend = new System.Windows.Forms.Button();
 			this.OnCancel = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
-			this.textBox4 = new System.Windows.Forms.TextBox();
+			this._txtEmailAddress = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -49,12 +49,13 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Name";
 			// 
-			// textBox1
+			// _txtName
 			// 
-			this.textBox1.Location = new System.Drawing.Point(29, 34);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(242, 22);
-			this.textBox1.TabIndex = 5;
+			this._txtName.Location = new System.Drawing.Point(29, 34);
+			this._txtName.Name = "_txtName";
+			this._txtName.ReadOnly = true;
+			this._txtName.Size = new System.Drawing.Size(242, 22);
+			this._txtName.TabIndex = 5;
 			// 
 			// label2
 			// 
@@ -120,12 +121,13 @@
 			this.label4.TabIndex = 7;
 			this.label4.Text = "Email Address";
 			// 
-			// textBox4
+			// _txtEmailAddress
 			// 
-			this.textBox4.Location = new System.Drawing.Point(29, 89);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(242, 22);
-			this.textBox4.TabIndex = 6;
+			this._txtEmailAddress.Location = new System.Drawing.Point(29, 89);
+			this._txtEmailAddress.Name = "_txtEmailAddress";
+			this._txtEmailAddress.ReadOnly = true;
+			this._txtEmailAddress.Size = new System.Drawing.Size(242, 22);
+			this._txtEmailAddress.TabIndex = 6;
 			// 
 			// MessageForm
 			// 
@@ -133,7 +135,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(304, 367);
-			this.Controls.Add(this.textBox4);
+			this.Controls.Add(this._txtEmailAddress);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.OnCancel);
 			this.Controls.Add(this.OnSend);
@@ -141,12 +143,13 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this._txtSubject);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this._txtName);
 			this.Controls.Add(this.label1);
 			this.MinimumSize = new System.Drawing.Size(322, 414);
 			this.Name = "MessageForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Send Message";
+			this.Load += new System.EventHandler(this.MessageForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -155,7 +158,6 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox _txtSubject;
 		private System.Windows.Forms.Label label3;
@@ -163,6 +165,7 @@
 		private System.Windows.Forms.Button OnSend;
 		private System.Windows.Forms.Button OnCancel;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox textBox4;
+		private System.Windows.Forms.TextBox _txtEmailAddress;
+		private System.Windows.Forms.TextBox _txtName;
 	}
 }

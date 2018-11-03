@@ -3,11 +3,6 @@
 // ITSE 1430 MW 5pm
 // SeedDataBase.cs
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactManager
 {
@@ -34,14 +29,12 @@ namespace ContactManager
 
 			var contacts = new[] {
 				new Contact(){
-					Name = "Test1",
-					EmailAddress = "testemail1@gmail.com",
+					Name = "Cesar Estrada",
+					EmailAddress = "Cesar.Estrada585@my.tccd.edu",
 				},				
 			};
 
-
-			Seed(source, contacts);	
-			//Seed(source);
+			Seed(source, contacts);				
 		}
 
 		/// <summary>Seeds a database.</summary>

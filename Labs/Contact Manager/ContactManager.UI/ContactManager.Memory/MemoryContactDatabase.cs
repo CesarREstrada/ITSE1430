@@ -3,12 +3,9 @@
 // ITSE 1430 MW 5pm
 // MemoryContactDataBase.cs
 
-using ContactManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactManager.Memory
 {
@@ -39,7 +36,6 @@ namespace ContactManager.Memory
 		protected override void EditCore ( Contact oldContact, Contact newContact )
 		{
 			_items.Remove(oldContact);
-
 			_items.Add(newContact);
 		}
 

@@ -40,16 +40,12 @@
 			this.OnHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this._listContacts = new System.Windows.Forms.ListBox();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this._messageContent = new System.Windows.Forms.ListBox();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this._sentMessages = new System.Windows.Forms.ListBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -142,6 +138,8 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.panel1.AutoScroll = true;
 			this.panel1.Controls.Add(this._listContacts);
 			this.panel1.Location = new System.Drawing.Point(13, 70);
@@ -160,31 +158,10 @@
 			this._listContacts.TabIndex = 0;
 			this._listContacts.DoubleClick += new System.EventHandler(this.OnContactDoubleClick);
 			// 
-			// panel2
-			// 
-			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel2.AutoScroll = true;
-			this.panel2.Controls.Add(this._messageContent);
-			this.panel2.Location = new System.Drawing.Point(9, 316);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(496, 240);
-			this.panel2.TabIndex = 2;
-			// 
-			// _messageContent
-			// 
-			this._messageContent.Dock = System.Windows.Forms.DockStyle.Fill;
-			this._messageContent.FormattingEnabled = true;
-			this._messageContent.ItemHeight = 16;
-			this._messageContent.Location = new System.Drawing.Point(0, 0);
-			this._messageContent.Name = "_messageContent";
-			this._messageContent.Size = new System.Drawing.Size(496, 240);
-			this._messageContent.TabIndex = 0;
-			// 
 			// panel3
 			// 
-			this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel3.AutoScroll = true;
 			this.panel3.Controls.Add(this._sentMessages);
@@ -223,39 +200,27 @@
 			this.label2.TabIndex = 5;
 			this.label2.Text = "Messages Sent";
 			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(9, 293);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(140, 20);
-			this.label3.TabIndex = 6;
-			this.label3.Text = "Message Content";
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.ClientSize = new System.Drawing.Size(520, 573);
-			this.Controls.Add(this.label3);
+			this.ClientSize = new System.Drawing.Size(520, 282);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.panel3);
-			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.menuStrip1);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.MainMenuStrip = this.menuStrip1;
-			this.MinimumSize = new System.Drawing.Size(538, 620);
+			this.MinimumSize = new System.Drawing.Size(538, 329);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Contact Manager";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.panel1.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -274,15 +239,12 @@
 		private System.Windows.Forms.ToolStripMenuItem OnContactEdit;
 		private System.Windows.Forms.ToolStripMenuItem OnContactDelete;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.ListBox _listContacts;
-		private System.Windows.Forms.ListBox _messageContent;
 		private System.Windows.Forms.ListBox _sentMessages;
 		private System.Windows.Forms.ToolStripMenuItem OnSendMessage;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
 	}
 }
 

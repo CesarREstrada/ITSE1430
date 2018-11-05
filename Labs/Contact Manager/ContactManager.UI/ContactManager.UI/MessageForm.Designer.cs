@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.label1 = new System.Windows.Forms.Label();
 			this._txtName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -38,6 +39,8 @@
 			this.OnCancel = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
 			this._txtEmailAddress = new System.Windows.Forms.TextBox();
+			this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+			((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -72,6 +75,7 @@
 			this._txtSubject.Name = "_txtSubject";
 			this._txtSubject.Size = new System.Drawing.Size(242, 22);
 			this._txtSubject.TabIndex = 0;
+			this._txtSubject.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingSubject);
 			// 
 			// label3
 			// 
@@ -129,10 +133,16 @@
 			this._txtEmailAddress.Size = new System.Drawing.Size(242, 22);
 			this._txtEmailAddress.TabIndex = 6;
 			// 
+			// _errors
+			// 
+			this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+			this._errors.ContainerControl = this;
+			// 
 			// MessageForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.ClientSize = new System.Drawing.Size(304, 367);
 			this.Controls.Add(this._txtEmailAddress);
@@ -150,6 +160,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Send Message";
 			this.Load += new System.EventHandler(this.MessageForm_Load);
+			((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -167,5 +178,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox _txtEmailAddress;
 		private System.Windows.Forms.TextBox _txtName;
+		private System.Windows.Forms.ErrorProvider _errors;
 	}
 }

@@ -19,14 +19,16 @@ namespace ContactManager.Memory
 		/// <summary>Gets all the contacts.</summary>
 		/// <returns>The list of contacts.</returns>
 		protected override IEnumerable<Contact> GetAllCore()
-		{		
+		{
 			//Use LINQ to clone movies
 			return from item in _items
 					   //where 
 				   select new Contact()
 				   {
-					   Name = item.Name,
-					   EmailAddress = item.EmailAddress,
+						Name = item.Name,
+						EmailAddress = item.EmailAddress,
+						Subject = item.Subject,
+						Message = item.Message,
 				   };						          
 		}
 

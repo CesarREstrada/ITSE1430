@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ContactManager
 {
 	/// <summary>Manages a set of contacts.</summary>
-	public abstract class ContactDatabase : IContactDatabase
+	public abstract class ContactDatabase : IContactDatabase, IMessageService
 	{
 		/// <summary>Adds a contact to the database.</summary>
 		/// <param name="contact">The contact to add.</param>

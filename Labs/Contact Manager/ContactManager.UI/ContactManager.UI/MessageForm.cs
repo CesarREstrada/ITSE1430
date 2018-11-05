@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ContactManager.UI
 {
-	public partial class MessageForm : Form //IContactDatabase  //impleace inferace ex
+	public partial class MessageForm : Form 
 	{
 		public Contact Contact { get; internal set; }
 
@@ -19,16 +19,7 @@ namespace ContactManager.UI
 
 		#region Event Handlers
 
-		//Contact contact = new Contact();
-		//string value = Contact.Name;
 		
-
-		//MessageForm message = new MessageForm(Contact);
-
-		//public Contact Contact { get; set; }
-		//public Message Message { get; set; }
-		//public new string Name { get; set; }
-
 		private void MessageForm_Load(object sender, EventArgs e)
 		{
 			_txtName.Text = Contact.Name;
@@ -37,7 +28,28 @@ namespace ContactManager.UI
 
 		private void OnSend_Click(object sender, EventArgs e)
 		{
+			if (!ValidateChildren())
+				return;
 
+			_txtEmailAddress.Text = Contact.EmailAddress; // you may not need
+
+			var contact = new Contact()
+			{
+				Subject = _txtSubject.Text,
+				EmailAddress = _txtMessage.Text,
+			};
+
+			var results = ObjectValidator.Validate(contact);
+			foreach (var result in results)
+			{
+				MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
+							   MessageBoxButtons.OK);
+				return;
+			};
+
+			Contact = contact;
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 
 		private void OnCancel_Click(object sender, EventArgs e)
@@ -46,10 +58,19 @@ namespace ContactManager.UI
 			Close();
 		}
 
-
-
 		#endregion
 
-		
+		private void OnValidatingSubject(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			var control = sender as TextBox;
+
+			if (String.IsNullOrEmpty(control.Text))
+			{				
+				_errors.SetError(control, "Subject is required");
+				e.Cancel = true;
+			}
+			else
+				_errors.SetError(control, "");
+		}
 	}
 }

@@ -3,7 +3,6 @@
 // ITSE 1430 MW 5pm
 // SeedDataBase.cs
 
-
 namespace ContactManager
 {
 	/// <summary>Provides extensions for <see cref="ContactDatabase"/>.</summary>
@@ -30,7 +29,7 @@ namespace ContactManager
 			var contacts = new[] {
 				new Contact(){
 					Name = "Cesar Estrada",
-					EmailAddress = "Cesar.Estrada585@my.tccd.edu",
+					EmailAddress = "cesar.estrada585@my.tccd.edu",
 				},				
 			};
 

@@ -2,6 +2,7 @@
 // November 5, 2018
 // ITSE 1430 MW 5pm
 // ContactForm.cs
+
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

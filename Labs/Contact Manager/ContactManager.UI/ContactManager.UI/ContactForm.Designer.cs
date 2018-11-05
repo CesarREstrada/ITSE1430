@@ -61,24 +61,29 @@
 			// 
 			// _txtName
 			// 
+			this._txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._txtName.Location = new System.Drawing.Point(152, 21);
 			this._txtName.Name = "_txtName";
-			this._txtName.Size = new System.Drawing.Size(242, 22);
+			this._txtName.Size = new System.Drawing.Size(200, 22);
 			this._txtName.TabIndex = 2;
 			this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingName);
 			// 
 			// _txtEmailAddress
 			// 
+			this._txtEmailAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._txtEmailAddress.Location = new System.Drawing.Point(152, 65);
 			this._txtEmailAddress.Name = "_txtEmailAddress";
-			this._txtEmailAddress.Size = new System.Drawing.Size(242, 22);
+			this._txtEmailAddress.Size = new System.Drawing.Size(200, 22);
 			this._txtEmailAddress.TabIndex = 3;
 			this._txtEmailAddress.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingEmail);
 			// 
 			// OnSave
 			// 
+			this.OnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.OnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.OnSave.Location = new System.Drawing.Point(157, 110);
+			this.OnSave.Location = new System.Drawing.Point(126, 119);
 			this.OnSave.Name = "OnSave";
 			this.OnSave.Size = new System.Drawing.Size(100, 32);
 			this.OnSave.TabIndex = 4;
@@ -88,8 +93,9 @@
 			// 
 			// OnCancel
 			// 
+			this.OnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.OnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.OnCancel.Location = new System.Drawing.Point(294, 110);
+			this.OnCancel.Location = new System.Drawing.Point(252, 119);
 			this.OnCancel.Name = "OnCancel";
 			this.OnCancel.Size = new System.Drawing.Size(100, 32);
 			this.OnCancel.TabIndex = 5;
@@ -108,7 +114,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.ClientSize = new System.Drawing.Size(427, 163);
+			this.ClientSize = new System.Drawing.Size(377, 171);
 			this.ControlBox = false;
 			this.Controls.Add(this.OnCancel);
 			this.Controls.Add(this.OnSave);
@@ -116,6 +122,7 @@
 			this.Controls.Add(this._txtName);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
+			this.MinimumSize = new System.Drawing.Size(395, 210);
 			this.Name = "ContactForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Add Contact";

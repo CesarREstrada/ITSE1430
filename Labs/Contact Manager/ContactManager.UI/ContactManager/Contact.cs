@@ -27,7 +27,26 @@ namespace ContactManager
 			set => _emailAddress = value;
 		}
 		// Backing field for email address
-		private string _emailAddress;		
+		private string _emailAddress;
+
+		// Property to back the subject field
+		public string Subject
+		{
+			get => _subject ?? "";
+			set => _subject = value;
+		}
+		// Backing field for subject
+		private string _subject;
+
+		// Property to back the message field
+		public string Message
+		{
+			get => _message ?? "";
+			set => _message = value;
+		}
+		// Backing field for message
+		private string _message;
+
 
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
@@ -39,6 +58,9 @@ namespace ContactManager
 
 			if (String.IsNullOrEmpty(EmailAddress))
 				yield return new ValidationResult("Email is required.", new[] { nameof(EmailAddress) });
+
+			if (String.IsNullOrEmpty(Subject))
+				yield return new ValidationResult("Subject is required.", new[] { nameof(Subject) });
 		}
 	}
 	

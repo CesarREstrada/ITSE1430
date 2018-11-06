@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Itse1430.MovieLib;
 using Itse1430.MovieLib.Memory;
+using Itse1430MovieLib.SQL;
 
 namespace Itse._1430.MovieLib.Ui
 {
@@ -35,11 +36,13 @@ namespace Itse._1430.MovieLib.Ui
         {
             base.OnLoad(e);
 
-            _database.Add(new Movie());
+            //TODO: Remove this line(test for errots)
+           // _database.Add(new Movie());
+
            //Seed database
            //var seed = new SeedDatabase();
            //SeedDatabase.Seed(_database);
-            _database.Seed(); // its an instance member calls the SeedDatabase adding additional functionallity to a _database (.Seed) extention method
+           //_database.Seed(); // its an instance member calls the SeedDatabase adding additional functionallity to a _database (.Seed) extention method
 
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
@@ -69,18 +72,41 @@ namespace Itse._1430.MovieLib.Ui
                 return;
 
             //Add to database and refresh
-            _database.Add(form.Movie);
+            try
+            {
+                _database.Add(form.Movie);
+            //} catch (ArgumentException ex)
+            //{
+            //    MessageBox.Show("Programmer messed up", "Error",
+            //                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            //    // Throw a different execption
+            //    throw new InvalidOperationException("Programmer messed up"); // hinds the impentation for people how dont really know whats going on
+
+            } catch (Exception ex) // normally we would use e instead of e becuase of the argument EventArgs e
+            {
+                MessageBox.Show(ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                // Log Failure
+                // Crash app
+                //throw ex; 0% of the time
+
+                // Rethrow 95% of the time you will use
+                //throw;
+            };
             RefreshMovies();
         }
 
         private void OnMovieDelete( object sender, EventArgs e )
         {
-            DeleteMovie();
+           DeleteMovie();            
         }
 
         private void OnMovieEdit( object sender, EventArgs e )
-        {
-            EditMovie();
+        {           
+                EditMovie();               
+            
         }
 
         private void OnMovieDoubleClick( object sender, EventArgs e )
@@ -107,7 +133,14 @@ namespace Itse._1430.MovieLib.Ui
                 return;
 
             //Remove from database and refresh
-            _database.Remove(item.Name);
+            try
+            {
+                _database.Remove(item.Name);
+            } catch ( Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
+            
             RefreshMovies();
         }
 
@@ -125,7 +158,13 @@ namespace Itse._1430.MovieLib.Ui
                 return;
 
             //Update database and refresh
-            _database.Edit(item.Name, form.Movie);
+            try
+            {
+                _database.Edit(item.Name, form.Movie);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };            
             RefreshMovies();
         }
 
@@ -151,7 +190,7 @@ namespace Itse._1430.MovieLib.Ui
             return _listMovies.SelectedItem as Movie;
         }
 
-        private IMovieDatabase _database = new MemoryMovieDatabase();
+        private IMovieDatabase _database = new SQLMoviedDatebase();
 
         #endregion        
     }

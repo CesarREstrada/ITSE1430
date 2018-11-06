@@ -20,7 +20,16 @@ namespace Itse1430.MovieLib
             //if (movie == null)
             //   return;
 
-            AddCore(movie);          
+            //if (movie == null) return;
+            try
+            {
+                AddCore(movie);
+            } catch (Exception e)
+            {
+                throw new Exception("Add failed", e); // the e is usefull debugging (chains the two exceptions togethor)
+            };
+
+                     
         }
 
         protected abstract void AddCore( Movie movie );

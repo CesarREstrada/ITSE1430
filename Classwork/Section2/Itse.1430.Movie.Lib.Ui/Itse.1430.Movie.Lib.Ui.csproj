@@ -96,6 +96,10 @@
       <Project>{54c28db4-3b84-4e4c-8953-0fa1941120c4}</Project>
       <Name>Itse1430MovieLib.Memory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Itse1430MovieLib.SQL\Itse1430MovieLib.SQL.csproj">
+      <Project>{C18B8323-7876-4F7D-AB93-091A18281C71}</Project>
+      <Name>Itse1430MovieLib.SQL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

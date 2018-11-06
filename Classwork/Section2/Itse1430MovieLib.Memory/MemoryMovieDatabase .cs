@@ -11,7 +11,12 @@ namespace Itse1430.MovieLib.Memory
     {
         /// <summary>Adds a movie to the database.</summary>
         /// <param name="movie">The movie to add.</param>
-        protected override void AddCore( Movie movie ) => _items.Add(movie);     // Lamba
+        protected override void AddCore( Movie movie )// => _items.Add(movie);     // Lamba
+        {
+            //throw new Exception("Failed");
+            _items.Add(movie);           
+
+        }  
         //{
         //    _items.Add(movie);
         //    //var index = FindNextFreeIndex();

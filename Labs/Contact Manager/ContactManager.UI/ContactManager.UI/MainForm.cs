@@ -26,8 +26,11 @@ namespace ContactManager.UI
 		{
 			base.OnLoad(e);
 
-			_database.Seed();
+			_database.Seed();			
 			_listContacts.DisplayMember = "Name";
+			_listMessages.DisplayMember = "EmailAddress";
+			_listMessages.DisplayMember = "Subject";
+			_listMessages.DisplayMember = "Message";
 			RefreshContacts();
 		}
 
@@ -149,10 +152,13 @@ namespace ContactManager.UI
 		{
 			var contacts = from m in _database.GetAll()
 						   orderby m.Name
-						   select m;
+						   select m;			
 
 			_listContacts.Items.Clear();
 			_listContacts.Items.AddRange(contacts.ToArray());
+
+			_listMessages.Items.Clear();			
+			_listMessages.Items.AddRange(contacts.ToArray());
 		}
 
 		private Contact GetSelectedContact()
@@ -163,7 +169,8 @@ namespace ContactManager.UI
 		#region Private Members
 
 		private IContactDatabase _database = new MemoryContactDatabase();
-
+		private IMessageService _database2 = new MemoryContactDatabase();
+		private IMessageService = IContactDatabase;
 		#endregion
 	}
 }

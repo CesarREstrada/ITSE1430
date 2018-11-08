@@ -38,13 +38,13 @@ namespace ContactManager
 		// Backing field for subject
 		private string _subject;
 
-		// Property to back the message field
+		// Property to back the email address field
 		public string Message
 		{
 			get => _message ?? "";
 			set => _message = value;
 		}
-		// Backing field for message
+		// Backing field for email address
 		private string _message;
 
 
@@ -59,8 +59,8 @@ namespace ContactManager
 			if (String.IsNullOrEmpty(EmailAddress))
 				yield return new ValidationResult("Email is required.", new[] { nameof(EmailAddress) });
 
-			if (String.IsNullOrEmpty(Subject))
-				yield return new ValidationResult("Subject is required.", new[] { nameof(Subject) });
+			//if (String.IsNullOrEmpty(Subject))
+			//	yield return new ValidationResult("Subject is required.", new[] { nameof(Subject) });
 		}
 	}
 	

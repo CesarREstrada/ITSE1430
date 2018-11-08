@@ -63,6 +63,13 @@ namespace ContactManager.Memory
 					select m).FirstOrDefault();
 		}
 
+		//internal override void AddCore(string emailAddress, string subject, string message)
+		//{
+		//	throw new NotImplementedException();
+		//}
+
+
+
 		#region Private Members
 
 		private List<Contact> _items = new List<Contact>();

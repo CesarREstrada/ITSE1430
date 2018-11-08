@@ -41,7 +41,7 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this._listContacts = new System.Windows.Forms.ListBox();
 			this.panel3 = new System.Windows.Forms.Panel();
-			this._sentMessages = new System.Windows.Forms.ListBox();
+			this._listMessages = new System.Windows.Forms.ListBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
@@ -164,21 +164,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel3.AutoScroll = true;
-			this.panel3.Controls.Add(this._sentMessages);
+			this.panel3.Controls.Add(this._listMessages);
 			this.panel3.Location = new System.Drawing.Point(207, 70);
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(302, 208);
 			this.panel3.TabIndex = 3;
 			// 
-			// _sentMessages
+			// _listMessages
 			// 
-			this._sentMessages.Dock = System.Windows.Forms.DockStyle.Fill;
-			this._sentMessages.FormattingEnabled = true;
-			this._sentMessages.ItemHeight = 16;
-			this._sentMessages.Location = new System.Drawing.Point(0, 0);
-			this._sentMessages.Name = "_sentMessages";
-			this._sentMessages.Size = new System.Drawing.Size(302, 208);
-			this._sentMessages.TabIndex = 0;
+			this._listMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+			this._listMessages.FormattingEnabled = true;
+			this._listMessages.ItemHeight = 16;
+			this._listMessages.Location = new System.Drawing.Point(0, 0);
+			this._listMessages.Name = "_listMessages";
+			this._listMessages.Size = new System.Drawing.Size(302, 208);
+			this._listMessages.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -241,7 +241,7 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.ListBox _listContacts;
-		private System.Windows.Forms.ListBox _sentMessages;
+		private System.Windows.Forms.ListBox _listMessages;
 		private System.Windows.Forms.ToolStripMenuItem OnSendMessage;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;

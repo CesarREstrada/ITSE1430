@@ -3,6 +3,7 @@
 // ITSE 1430 MW 5pm
 // SendMessage.cs
 
+using ContactManager.Memory;
 using System;
 using System.Windows.Forms;
 
@@ -10,33 +11,34 @@ namespace ContactManager.UI
 {
 	public partial class MessageForm : Form 
 	{
-		public Contact Contact { get; internal set; }
-
 		public MessageForm()
 		{
 			InitializeComponent();
 		}
 
-		#region Event Handlers
+		public Contact Contact { get; internal set; }
+		public Message Message { get; private set; }
 
-		
 		private void MessageForm_Load(object sender, EventArgs e)
 		{
 			_txtName.Text = Contact.Name;
-			_txtEmailAddress.Text = Contact.EmailAddress;			
+			_txtEmailAddress.Text = Contact.EmailAddress;
 		}
+
+		#region Event Handlers
 
 		private void OnSend_Click(object sender, EventArgs e)
 		{
 			if (!ValidateChildren())
 				return;
 
-			_txtEmailAddress.Text = Contact.EmailAddress; // you may not need
+			//_txtEmailAddress.Text = Contact.EmailAddress; // you may not need
 
-			var contact = new Contact()
-			{
-				Subject = _txtSubject.Text,
+			var contact = new Contact()	{
+				Name = _txtName.Text,
 				EmailAddress = _txtMessage.Text,
+				Subject = _txtSubject.Text,
+				Message = _txtMessage.Text,				
 			};
 
 			var results = ObjectValidator.Validate(contact);
@@ -72,5 +74,8 @@ namespace ContactManager.UI
 			else
 				_errors.SetError(control, "");
 		}
+
+		private IContactDatabase _database = new MemoryContactDatabase();
+
 	}
 }

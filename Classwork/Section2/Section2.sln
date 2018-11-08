@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayWithLINQ", "PlayWithLIN
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MovieDatabase", "MovieDatabase\MovieDatabase.sqlproj", "{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itse1430MovieLib.SQL", "Itse1430MovieLib.SQL\Itse1430MovieLib.SQL.csproj", "{C18B8323-7876-4F7D-AB93-091A18281C71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itse1430MovieLib.Sql", "Itse1430MovieLib.SQL\Itse1430MovieLib.Sql.csproj", "{C18B8323-7876-4F7D-AB93-091A18281C71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

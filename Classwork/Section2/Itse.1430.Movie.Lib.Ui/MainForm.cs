@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -35,6 +36,9 @@ namespace Itse._1430.MovieLib.Ui
         protected override void OnLoad( EventArgs e )
         {
             base.OnLoad(e);
+                                                                   // for App.Config 
+            var connString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;       // adds connection string
+            _database = new SqlMoviedDatebase(connString);
 
             //TODO: Remove this line(test for errots)
            // _database.Add(new Movie());
@@ -190,7 +194,7 @@ namespace Itse._1430.MovieLib.Ui
             return _listMovies.SelectedItem as Movie;
         }
 
-        private IMovieDatabase _database = new SQLMoviedDatebase();
+        private IMovieDatabase _database; // = new SqlMoviedDatebase();
 
         #endregion        
     }

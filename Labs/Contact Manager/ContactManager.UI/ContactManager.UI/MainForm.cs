@@ -30,9 +30,10 @@ namespace ContactManager.UI
 			_listContacts.DisplayMember = "Name";
 
 			_database2.Seed();
-			_listMessages.DisplayMember = "EmailAddress";
-			_listMessages.DisplayMember = "Subject";
+			//_listMessages.DisplayMember = "EmailAddress";
+			//_listMessages.DisplayMember = "Subject";
 			_listMessages.DisplayMember = "Message";
+
 			RefreshContacts();
 		}
 

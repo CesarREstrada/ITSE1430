@@ -16,8 +16,8 @@ namespace ContactManager.UI
 			InitializeComponent();
 		}
 
-		public Contact Contact { get; set; }
-		//public Contact Contact { get; internal set; }
+		//public Contact Contact { get; set; }
+		public Contact Contact { get; internal set; }
 		
 
 		private void MessageForm_Load(object sender, EventArgs e)
@@ -35,11 +35,12 @@ namespace ContactManager.UI
 
 			//_txtEmailAddress.Text = Contact.EmailAddress; // you may not need			
 
-			var contact = new Contact()	{
+			var contact = new Contact() {
 				//Name = _txtName.Text,
-				EmailAddress = _txtEmailAddress.Text,
-				Subject = _txtSubject.Text,
-				Message = _txtMessage.Text,				
+				//EmailAddress = _txtEmailAddress.Text,
+				//Subject = _txtSubject.Text,
+				//Message = _txtMessage.Text,
+				Message = string.Join("   ", _txtEmailAddress.Text, _txtSubject.Text, _txtMessage.Text), 
 			};
 
 

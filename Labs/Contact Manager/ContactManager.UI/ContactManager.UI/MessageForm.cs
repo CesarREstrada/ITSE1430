@@ -16,8 +16,9 @@ namespace ContactManager.UI
 			InitializeComponent();
 		}
 
-		public Contact Contact { get; internal set; }
-		public Message Message { get; private set; }
+		public Contact Contact { get; set; }
+		//public Contact Contact { get; internal set; }
+		
 
 		private void MessageForm_Load(object sender, EventArgs e)
 		{
@@ -32,22 +33,27 @@ namespace ContactManager.UI
 			if (!ValidateChildren())
 				return;
 
-			//_txtEmailAddress.Text = Contact.EmailAddress; // you may not need
+			//_txtEmailAddress.Text = Contact.EmailAddress; // you may not need			
 
 			var contact = new Contact()	{
-				Name = _txtName.Text,
-				EmailAddress = _txtMessage.Text,
+				//Name = _txtName.Text,
+				EmailAddress = _txtEmailAddress.Text,
 				Subject = _txtSubject.Text,
 				Message = _txtMessage.Text,				
 			};
 
-			var results = ObjectValidator.Validate(contact);
-			foreach (var result in results)
-			{
-				MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
-							   MessageBoxButtons.OK);
-				return;
-			};
+
+			//var fullMessage = "EmailAddress + '\n' + Subject + '\n' + Message";
+
+			//var fullMessage = EmailAddress + "\n" + Subject + "\n" + Message;
+
+			//var results = ObjectValidator.Validate(contact);
+			//foreach (var result in results)
+			//{
+			//	MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
+			//				   MessageBoxButtons.OK);
+			//	return;
+			//};
 
 			Contact = contact;
 			DialogResult = DialogResult.OK;
@@ -75,7 +81,7 @@ namespace ContactManager.UI
 				_errors.SetError(control, "");
 		}
 
-		private IContactDatabase _database = new MemoryContactDatabase();
+		//private IContactDatabase _database = new MemoryContactDatabase();
 
 	}
 }

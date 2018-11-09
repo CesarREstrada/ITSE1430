@@ -10,6 +10,9 @@ namespace ContactManager
 	/// <summary>Provides services for sending messages.</summary>
 	public interface IMessageService
 	{
+		/// <summary>Provides services for sending messages.</summary>
 		void Send (string emailAddress, string subject, string message);
+
+		void Add(Contact contact);
 	}
 }

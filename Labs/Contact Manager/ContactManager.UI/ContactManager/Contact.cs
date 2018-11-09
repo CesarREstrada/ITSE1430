@@ -46,6 +46,17 @@ namespace ContactManager
 		}
 		// Backing field for email address
 		private string _message;
+		
+
+		//public string CompleteMessage
+		//{
+		//	get => _completeMessage = _emailAddress + _subject + _message;
+		//	set => _completeMessage = value;
+		//}
+		//// Backing field for email address
+		//private readonly string _completeMessage;
+
+		//public string ComnpleteMessage = _message + "\n";
 
 
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

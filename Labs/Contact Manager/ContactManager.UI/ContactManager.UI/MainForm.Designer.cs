@@ -41,9 +41,9 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this._listContacts = new System.Windows.Forms.ListBox();
 			this.panel3 = new System.Windows.Forms.Panel();
-			this._listMessages = new System.Windows.Forms.ListBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this._listMessages = new System.Windows.Forms.ListBox();
 			this.menuStrip1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -157,6 +157,7 @@
 			this._listContacts.Size = new System.Drawing.Size(183, 208);
 			this._listContacts.TabIndex = 0;
 			this._listContacts.DoubleClick += new System.EventHandler(this.OnContactDoubleClick);
+			this._listContacts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnListKeyUp);
 			// 
 			// panel3
 			// 
@@ -169,16 +170,6 @@
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(302, 208);
 			this.panel3.TabIndex = 3;
-			// 
-			// _listMessages
-			// 
-			this._listMessages.Dock = System.Windows.Forms.DockStyle.Fill;
-			this._listMessages.FormattingEnabled = true;
-			this._listMessages.ItemHeight = 16;
-			this._listMessages.Location = new System.Drawing.Point(0, 0);
-			this._listMessages.Name = "_listMessages";
-			this._listMessages.Size = new System.Drawing.Size(302, 208);
-			this._listMessages.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -199,6 +190,16 @@
 			this.label2.Size = new System.Drawing.Size(125, 20);
 			this.label2.TabIndex = 5;
 			this.label2.Text = "Messages Sent";
+			// 
+			// _listMessages
+			// 
+			this._listMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+			this._listMessages.FormattingEnabled = true;
+			this._listMessages.ItemHeight = 16;
+			this._listMessages.Location = new System.Drawing.Point(0, 0);
+			this._listMessages.Name = "_listMessages";
+			this._listMessages.Size = new System.Drawing.Size(302, 208);
+			this._listMessages.TabIndex = 0;
 			// 
 			// MainForm
 			// 
@@ -241,10 +242,10 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.ListBox _listContacts;
-		private System.Windows.Forms.ListBox _listMessages;
 		private System.Windows.Forms.ToolStripMenuItem OnSendMessage;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ListBox _listMessages;
 	}
 }
 

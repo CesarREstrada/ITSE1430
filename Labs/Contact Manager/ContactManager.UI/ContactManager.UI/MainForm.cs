@@ -22,17 +22,24 @@ namespace ContactManager.UI
 
 		#endregion
 
-		protected override void OnLoad ( EventArgs e )
+		protected override void OnLoad(EventArgs e)
 		{
 			base.OnLoad(e);
 
 			_database.Seed();			
 			_listContacts.DisplayMember = "Name";
+
+			_database2.Seed();
 			_listMessages.DisplayMember = "EmailAddress";
 			_listMessages.DisplayMember = "Subject";
 			_listMessages.DisplayMember = "Message";
 			RefreshContacts();
 		}
+
+		//private void messageSent()
+		//{
+		//	var 
+		//}
 
 		#region Event Handlers
 
@@ -71,7 +78,10 @@ namespace ContactManager.UI
 			var form = new MessageForm();
 			form.Contact = item;
 			if (form.ShowDialog(this) == DialogResult.Cancel)
-				return;			
+				return;
+
+			_database2.Add(form.Contact);
+			RefreshContacts();
 		}
 
 		private void OnContactEdit_Click(object sender, EventArgs e)
@@ -157,8 +167,12 @@ namespace ContactManager.UI
 			_listContacts.Items.Clear();
 			_listContacts.Items.AddRange(contacts.ToArray());
 
-			_listMessages.Items.Clear();			
-			_listMessages.Items.AddRange(contacts.ToArray());
+			var messages = from m in _database2.GetAll()
+						   orderby m.Name
+						   select m;
+
+			_listMessages.Items.Clear();
+			_listMessages.Items.AddRange(messages.ToArray());
 		}
 
 		private Contact GetSelectedContact()
@@ -169,8 +183,9 @@ namespace ContactManager.UI
 		#region Private Members
 
 		private IContactDatabase _database = new MemoryContactDatabase();
-		private IMessageService _database2 = new MemoryContactDatabase();
-		private IMessageService = IContactDatabase;
+		private IContactDatabase _database2 = new MemoryContactDatabase();		
 		#endregion
+
+		
 	}
 }

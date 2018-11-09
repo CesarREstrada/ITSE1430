@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ContactManager
 {
 	/// <summary>Manages a set of contacts.</summary>
-	public abstract class ContactDatabase : IContactDatabase//, IMessageService
+	public abstract class ContactDatabase : IContactDatabase, IMessageService
 	{
 		/// <summary>Adds a contact to the database.</summary>
 		/// <param name="contact">The contact to add.</param>
@@ -23,16 +23,7 @@ namespace ContactManager
 
 			AddCore(contact);
 		}		
-
-		//public void Send(string emailAddress, string subject, string message)      //string emailAddress, string subject, string message
-		//{
-		//	if (subject == null)
-		//		return;
-
-		//	AddCore(emailAddress, subject, message);
-		//}
-
-		//internal abstract void AddCore(string emailAddress, string subject, string message);
+			
 
 		/// <summary>Gets all the contacts.</summary>
 		/// <returns>The list of contacts.</returns>
@@ -89,6 +80,8 @@ namespace ContactManager
 		/// <summary>Gets all the contacts.</summary>
 		/// <returns>The list of contacts.</returns>
 		protected abstract void RemoveCore(string name);
+
+		public abstract void Send(string emailAddress, string subject, string message);
 		#endregion
 	}
 }

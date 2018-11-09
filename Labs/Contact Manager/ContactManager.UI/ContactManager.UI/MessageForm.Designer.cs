@@ -54,6 +54,8 @@
 			// 
 			// _txtName
 			// 
+			this._txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._txtName.Location = new System.Drawing.Point(29, 34);
 			this._txtName.Name = "_txtName";
 			this._txtName.ReadOnly = true;
@@ -71,6 +73,8 @@
 			// 
 			// _txtSubject
 			// 
+			this._txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._txtSubject.Location = new System.Drawing.Point(29, 144);
 			this._txtSubject.Name = "_txtSubject";
 			this._txtSubject.Size = new System.Drawing.Size(242, 22);
@@ -88,6 +92,9 @@
 			// 
 			// _txtMessage
 			// 
+			this._txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._txtMessage.Location = new System.Drawing.Point(29, 199);
 			this._txtMessage.Multiline = true;
 			this._txtMessage.Name = "_txtMessage";
@@ -96,6 +103,7 @@
 			// 
 			// OnSend
 			// 
+			this.OnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.OnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.OnSend.Location = new System.Drawing.Point(32, 313);
 			this.OnSend.Name = "OnSend";
@@ -107,6 +115,7 @@
 			// 
 			// OnCancel
 			// 
+			this.OnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.OnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.OnCancel.Location = new System.Drawing.Point(171, 313);
 			this.OnCancel.Name = "OnCancel";
@@ -127,6 +136,8 @@
 			// 
 			// _txtEmailAddress
 			// 
+			this._txtEmailAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._txtEmailAddress.Location = new System.Drawing.Point(29, 89);
 			this._txtEmailAddress.Name = "_txtEmailAddress";
 			this._txtEmailAddress.ReadOnly = true;
@@ -144,7 +155,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
 			this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.ClientSize = new System.Drawing.Size(304, 367);
+			this.ClientSize = new System.Drawing.Size(304, 396);
+			this.ControlBox = false;
 			this.Controls.Add(this._txtEmailAddress);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.OnCancel);

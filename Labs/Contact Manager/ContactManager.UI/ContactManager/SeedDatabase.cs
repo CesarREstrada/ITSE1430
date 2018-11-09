@@ -35,6 +35,7 @@ namespace ContactManager
 
 			Seed(source, contacts);				
 		}
+				
 
 		/// <summary>Seeds a database.</summary>
 		/// <param name="source">The database to seed.</param>

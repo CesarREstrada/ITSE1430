@@ -25,15 +25,15 @@ namespace ContactManager.Memory
 					   //where 
 				   select new Contact()
 				   {
-						Name = item.Name,
-						EmailAddress = item.EmailAddress,
-						Subject = item.Subject,
-						Message = item.Message,
+					   Name = item.Name,
+					   EmailAddress = item.EmailAddress,
+					   Subject = item.Subject,
+					   Message = item.Message,
 				   };						          
 		}
 
 		/// <summary>Edits an existing contact.</summary>
-		/// <param name="name">The movie to edit.</param>
+		/// <param name="name">The contact to edit.</param>
 		/// <param name="contact">The new contact.</param>
 		protected override void EditCore ( Contact oldContact, Contact newContact )
 		{
@@ -63,6 +63,8 @@ namespace ContactManager.Memory
 					select m).FirstOrDefault();
 		}
 
+		public override void Send(string emailAddress, string subject, string message) => _items.Add(contact);
+
 		//internal override void AddCore(string emailAddress, string subject, string message)
 		//{
 		//	throw new NotImplementedException();
@@ -73,6 +75,8 @@ namespace ContactManager.Memory
 		#region Private Members
 
 		private List<Contact> _items = new List<Contact>();
+
+		public Contact contact { get; private set; }
 		#endregion
 	}
 }

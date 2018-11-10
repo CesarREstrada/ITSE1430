@@ -13,14 +13,14 @@ namespace ContactManager.UI
 {
 	public partial class MainForm : Form
 	{
-		#region Contruction
+		#region Construction
 
 		public MainForm()
 		{
 			InitializeComponent();
 		}
 
-		#endregion
+		#endregion		
 
 		protected override void OnLoad(EventArgs e)
 		{
@@ -29,18 +29,11 @@ namespace ContactManager.UI
 			_database.Seed();			
 			_listContacts.DisplayMember = "Name";
 
-			_database2.Seed();
-			//_listMessages.DisplayMember = "EmailAddress";
-			//_listMessages.DisplayMember = "Subject";
+			_database2.Seed();			
 			_listMessages.DisplayMember = "Message";
 
 			RefreshContacts();
-		}
-
-		//private void messageSent()
-		//{
-		//	var 
-		//}
+		}		
 
 		#region Event Handlers
 
@@ -58,12 +51,6 @@ namespace ContactManager.UI
 			var form = new ContactForm();
 			if (form.ShowDialog(this) == DialogResult.Cancel)
 				return;
-
-			// validate duplicates ?????????????????????????????????????
-			//var contacts = from m in _database.GetAll()
-			//			   where 
-			//			   orderby m.Name
-			//			   select m;
 
 			_database.Add(form.Contact);
 			RefreshContacts();
@@ -185,8 +172,6 @@ namespace ContactManager.UI
 
 		private IContactDatabase _database = new MemoryContactDatabase();
 		private IContactDatabase _database2 = new MemoryContactDatabase();		
-		#endregion
-
-		
+		#endregion		
 	}
 }

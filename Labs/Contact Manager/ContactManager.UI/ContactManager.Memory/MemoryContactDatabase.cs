@@ -55,8 +55,6 @@ namespace ContactManager.Memory
 		/// <returns>The contact, if any.</returns>
 		protected override Contact FindByName(string name)
 		{
-			//return _items.FirstOrDefault(m => String.Compare(name, m.Name, true) == 0);
-
 			//SQL syntax
 			return (from m in _items
 					where String.Compare(name, m.Name, true) == 0
@@ -64,13 +62,6 @@ namespace ContactManager.Memory
 		}
 
 		public override void Send(string emailAddress, string subject, string message) => _items.Add(contact);
-
-		//internal override void AddCore(string emailAddress, string subject, string message)
-		//{
-		//	throw new NotImplementedException();
-		//}
-
-
 
 		#region Private Members
 

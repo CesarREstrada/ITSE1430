@@ -1,7 +1,7 @@
 ﻿// Cesar Estrada
 // November 5, 2018
 // ITSE 1430 MW 5pm
-// SeedDataBase.cs
+// SeedDatabase.cs
 
 namespace ContactManager
 {
@@ -15,17 +15,6 @@ namespace ContactManager
 		/// </remarks>
 		public static void Seed ( this IContactDatabase source )
 		{
-			//var contacts = new[] {
-			//	new Contact(){
-			//		Name = "Test1",
-			//		EmailAddress = "testemail1@gmail.com",
-			//	},
-			//	new Contact() {
-			//	Name = "Test2",
-			//	EmailAddress = "testemail2@gmail.com"
-			//	},
-			//};
-
 			var contacts = new[] {
 				new Contact(){
 					Name = "Cesar Estrada",
@@ -34,8 +23,7 @@ namespace ContactManager
 			};
 
 			Seed(source, contacts);				
-		}
-				
+		}				
 
 		/// <summary>Seeds a database.</summary>
 		/// <param name="source">The database to seed.</param>
@@ -45,6 +33,7 @@ namespace ContactManager
 		/// </remarks>
 		public static void Seed ( this IContactDatabase source, Contact[] contacts )
 		{
+			
 			foreach (var contact in contacts)
 				source.Add(contact);
 		}

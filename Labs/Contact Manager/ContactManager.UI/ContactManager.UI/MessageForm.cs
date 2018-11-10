@@ -1,7 +1,7 @@
 ﻿// Cesar Estrada
 // November 5, 2018
 // ITSE 1430 MW 5pm
-// SendMessage.cs
+// MessageForm.cs
 
 using ContactManager.Memory;
 using System;
@@ -14,11 +14,8 @@ namespace ContactManager.UI
 		public MessageForm()
 		{
 			InitializeComponent();
-		}
-
-		//public Contact Contact { get; set; }
-		public Contact Contact { get; internal set; }
-		
+		}		
+		public Contact Contact { get; internal set; }		
 
 		private void MessageForm_Load(object sender, EventArgs e)
 		{
@@ -32,30 +29,11 @@ namespace ContactManager.UI
 		{
 			if (!ValidateChildren())
 				return;
-
-			//_txtEmailAddress.Text = Contact.EmailAddress; // you may not need			
-
-			var contact = new Contact() {
-				//Name = _txtName.Text,
-				//EmailAddress = _txtEmailAddress.Text,
-				//Subject = _txtSubject.Text,
-				//Message = _txtMessage.Text,
+						
+			var contact = new Contact() {				
 				Message = string.Join("   ", _txtEmailAddress.Text, _txtSubject.Text, _txtMessage.Text), 
 			};
-
-
-			//var fullMessage = "EmailAddress + '\n' + Subject + '\n' + Message";
-
-			//var fullMessage = EmailAddress + "\n" + Subject + "\n" + Message;
-
-			//var results = ObjectValidator.Validate(contact);
-			//foreach (var result in results)
-			//{
-			//	MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
-			//				   MessageBoxButtons.OK);
-			//	return;
-			//};
-
+			
 			Contact = contact;
 			DialogResult = DialogResult.OK;
 			Close();
@@ -81,8 +59,5 @@ namespace ContactManager.UI
 			else
 				_errors.SetError(control, "");
 		}
-
-		//private IContactDatabase _database = new MemoryContactDatabase();
-
 	}
 }

@@ -46,32 +46,14 @@ namespace ContactManager
 		}
 		// Backing field for email address
 		private string _message;
-		
-
-		//public string CompleteMessage
-		//{
-		//	get => _completeMessage = _emailAddress + _subject + _message;
-		//	set => _completeMessage = value;
-		//}
-		//// Backing field for email address
-		//private readonly string _completeMessage;
-
-		//public string ComnpleteMessage = _message + "\n";
-
 
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
 			if (String.IsNullOrEmpty(Name))
 				yield return new ValidationResult("Name is required.", new[] { nameof(Name) });
 
-			//if (String.Distinct().Count != String.Count())
-			//	yield return new ValidationResult("Valid is required.", new[] { nameof(EmailAddress) });
-
 			if (String.IsNullOrEmpty(EmailAddress))
 				yield return new ValidationResult("Email is required.", new[] { nameof(EmailAddress) });
-
-			//if (String.IsNullOrEmpty(Subject))
-			//	yield return new ValidationResult("Subject is required.", new[] { nameof(Subject) });
 		}
 	}
 	

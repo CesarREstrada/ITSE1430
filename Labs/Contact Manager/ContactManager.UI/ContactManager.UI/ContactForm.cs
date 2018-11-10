@@ -31,10 +31,11 @@ namespace ContactManager.UI
 		#region Event Handlers
 
 		private void OnSave_Click(object sender, EventArgs e)
-		{
+		{			
+
 			if (!ValidateChildren())
 				return;
-
+			
 			var contact = new Contact() {
 				Name = _txtName.Text,
 				EmailAddress = _txtEmailAddress.Text,
@@ -73,31 +74,16 @@ namespace ContactManager.UI
 
 		private void OnValidatingEmail(object sender, CancelEventArgs e)
 		{
-			var control = sender as TextBox;
-
-			//IsValideEmail(control.Text);
+			var control = sender as TextBox;						
 
 			if (String.IsNullOrEmpty(control.Text))
 			{
 				_errors.SetError(control, "Valid email is required");
-				e.Cancel = true; //IsValideEmail(control.Text)
+				e.Cancel = true; 
 			}
 			else
 				_errors.SetError(control, "");
 		}
-
-		//bool IsValideEmail(string source)		// where does this go maybe in message for
-		//{
-		//	try
-		//	{
-		//		new System.Net.Mail.MailAddress(source);
-		//		return true;
-		//	} catch
-		//	{ };
-		//	return false;
-		//}
-
 		#endregion
-				
 	}
 }

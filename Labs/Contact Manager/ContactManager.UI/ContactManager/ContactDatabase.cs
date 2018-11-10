@@ -22,8 +22,7 @@ namespace ContactManager
 				return;
 
 			AddCore(contact);
-		}		
-			
+		}				
 
 		/// <summary>Gets all the contacts.</summary>
 		/// <returns>The list of contacts.</returns>
@@ -80,8 +79,8 @@ namespace ContactManager
 		/// <summary>Gets all the contacts.</summary>
 		/// <returns>The list of contacts.</returns>
 		protected abstract void RemoveCore(string name);
-
-		public abstract void Send(string emailAddress, string subject, string message);
 		#endregion
+		
+		public abstract void Send(string emailAddress, string subject, string message);
 	}
 }

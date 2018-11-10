@@ -195,6 +195,7 @@
 			// 
 			this._listMessages.Dock = System.Windows.Forms.DockStyle.Fill;
 			this._listMessages.FormattingEnabled = true;
+			this._listMessages.HorizontalScrollbar = true;
 			this._listMessages.ItemHeight = 16;
 			this._listMessages.Location = new System.Drawing.Point(0, 0);
 			this._listMessages.Name = "_listMessages";

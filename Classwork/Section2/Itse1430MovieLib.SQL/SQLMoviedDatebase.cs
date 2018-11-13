@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -69,39 +70,111 @@ namespace Itse1430MovieLib.SQL          // in programming it should be Sql
 
         protected override void EditCore( Movie oldMovie, Movie newMovie )
         {
-            using (var conn = CreateConnection())     // base connection
+            using (var conn = CreateConnection())     // base connection the using statment (IDisposable) will close the connection
             {
                 //var cmd = new SqlCommand("AddMovie", conn);
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "UpdateMovie";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                var id = GetMovieId(oldMovie); // temp hard code
+                var id = GetMovieId(oldMovie); 
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@title", newMovie.Name);
                 cmd.Parameters.AddWithValue("@length", newMovie.RunLength);
                 cmd.Parameters.AddWithValue("@isOwned", newMovie.IsOwned);
                 cmd.Parameters.AddWithValue("@description", newMovie.Description);
 
-                conn.Open();
+                conn.Open();                // may be able to use the data adapter to open the connection in GetAllCore
                 cmd.ExecuteNonQuery();
             };
         }
 
-        private object GetMovieId( Movie oldMovie )
+        //Gets the ID if this is a SQL movie
+        private object GetMovieId( Movie movie )
         {
-            return 1;
+            var sql = movie as SqlMovie;
+
+            return sql?.Id ?? 0;
         }
 
         protected override Movie FindByName( string name )
         {
-            throw new NotImplementedException();
+            // Using a data reader
+            using (var conn = CreateConnection())
+            {
+                var da = new SqlDataAdapter();
+                var cmd = new SqlCommand("GetAllMovies", conn);
+                cmd.CommandType = CommandType.StoredProcedure;        // the fill method generates the DataTable[] for Data visulizer
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())        // ExcuteReader will never return NULL
+                {
+                    while (reader.Read())       // must use a while loop to read the first row
+                    {
+                        var movieName = reader.GetString(1);
+                        if (String.Compare(movieName, name, true) != 0)
+                            continue;
+
+                        //reader.GetOrdinal("Id");
+
+                        return new SqlMovie() {
+                            Id = reader.GetFieldValue<int>(0),
+                            Name = movieName,
+                            Description = Convert.ToString(reader.GetValue(2)),
+                            ReleaseYear = 1900,
+                            RunLength = reader.GetFieldValue<int>(3),
+                            IsOwned = reader.GetBoolean(4),
+                        };
+                    };
+                };
+
+            };
+
+            return null;
         }
 
+        //
         protected override IEnumerable<Movie> GetAllCore()
         {
+           // Using a DataSet 
+            var ds = new DataSet();     // data visulizer here after break point is set on the return new Movie[0]******************************************************
+
+            using (var conn = CreateConnection())
+            {
+                var da = new SqlDataAdapter();
+                var cmd = new SqlCommand("GetAllMovies", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                da.SelectCommand = cmd;         // data adatper will automatically OPEN the connection and CLOSEd the connection for you
+                da.Fill(ds);        // the fill method generates the DataTable[] for Data visulizer
+
+            };
+
+            // Read data
+           // if(!ds.Tables.OfType<DataTable>().Any())        // ofType implents IEnumarable<T>
+           //     return Enumerable.Empty<Movie>();
+
+            var table = ds.Tables.OfType<DataTable>().FirstOrDefault();    //fetches the first table or null
+            if (table == null)
+                return Enumerable.Empty<Movie>();
+
+            var movies = new List<Movie>();
+            foreach (var row in table.Rows.OfType<DataRow>())
+            {
+                var movie = new SqlMovie() {                    
+                    Id = Convert.ToInt32(row["Id"]),            // convert to a int
+                    Name = row.Field<string>("Title"),           // does the string conversion behind the sences
+                    Description = Convert.ToString(row[2]),     // another way to convert to a string
+                    ReleaseYear = 1900,
+                    RunLength = row.Field<int>(3),
+                    IsOwned = Convert.ToBoolean(row[4]),
+                };
+                movies.Add(movie);
+            };
+
+            return movies;
             //throw new NotImplementedException();
-            return new Movie[0];
+            //return new Movie[0];
         }
 
         protected override void RemoveCore( string name )

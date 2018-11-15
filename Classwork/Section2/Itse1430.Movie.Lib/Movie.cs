@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,12 @@ using System.Threading.Tasks;
 // this is where your data for your creatures in programming assignment 2
 namespace Itse1430.MovieLib
 {
+    [Description("A movie.")]
     public class Movie : IValidatableObject        // interface  -- movie implements IvalidatebaleObject
     {
         // in classes we don't want to use fields(variable) we want to use methods(functions) to validate and store data
+        [Required(AllowEmptyStrings = false)]             // attribute that is added medadata required stats that name can not be null***************************************
+        //[StringLength(100, MinimumLength = 1)]
         public string Name                  // sample on properties
         {                                                                                       // lab 2 ****************************************
             //get { return _name ?? ""; }       // string get ()
@@ -54,6 +58,11 @@ namespace Itse1430.MovieLib
         //    _description = value;                   // _camelCase your fields
         //}
 
+
+        // Using auto property with field initializer ****************************************************
+        [Range(1900, 2100, ErrorMessage = "Release year must be greater than or equal to 1900.")]          // ints doubles decimals
+        //[Required] *********** does nothing with value types(int)
+        //[RangeAttribute(1900, 2100), RequiredAttribute()]
         public int ReleaseYear { get; set; } = 1900;        // initializes the backing field for movie release year
 
         //public int ReleaseYear                  // non string property
@@ -75,6 +84,7 @@ namespace Itse1430.MovieLib
         //        _releaseYear = value;
         //}
 
+        [Range(0, Int32.MaxValue, ErrorMessage = "Run length must be >= 0.")]
         public int RunLength { get; set; }      // this is a auto property same as code below
 
         //private int _runLenght;       // no longer need this field becuase the auto property generates one
@@ -134,15 +144,17 @@ namespace Itse1430.MovieLib
         {
             // Using iterator syntax instead of List<T>
             //var results = new List<ValidationResult>();
-            
-            if (String.IsNullOrEmpty(Name))
-                yield return new ValidationResult("Name is required.", new[] { nameof(Name) }); // [] creates a new array
 
-            if (ReleaseYear < 1900)
-                yield return new ValidationResult("Release year mest be >= 1900", new[] { nameof(ReleaseYear) });
+            //if (String.IsNullOrEmpty(Name))
+            //    yield return new ValidationResult("Name is required.", new[] { nameof(Name) }); // [] creates a new array         ******* no longer needed because of [RequiredAttribute]*************
 
-            if (RunLength < 0)
-                yield return new ValidationResult("Run length must be >= 0", new[] { nameof(RunLength) });
+            //if (ReleaseYear < 1900)
+            //    yield return new ValidationResult("Release year mest be >= 1900", new[] { nameof(ReleaseYear) });         *** no longer needed [RangeAttribute]
+
+            //    if (RunLength < 0)
+            //        yield return new ValidationResult("Run length must be >= 0", new[] { nameof(RunLength) });            *** no longer needed [RangeAttribute]
+
+            yield return null;
         }
     }
 }

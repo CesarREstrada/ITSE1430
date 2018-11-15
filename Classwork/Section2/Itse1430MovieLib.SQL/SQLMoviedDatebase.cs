@@ -99,7 +99,7 @@ namespace Itse1430MovieLib.SQL          // in programming it should be Sql
 
         protected override Movie FindByName( string name )
         {
-            // Using a data reader
+            // Using a data reader  *********************************************************************************************************
             using (var conn = CreateConnection())
             {
                 var da = new SqlDataAdapter();
@@ -136,7 +136,7 @@ namespace Itse1430MovieLib.SQL          // in programming it should be Sql
         //
         protected override IEnumerable<Movie> GetAllCore()
         {
-           // Using a DataSet 
+           // Using a DataSet ************************************************************************************************************************************
             var ds = new DataSet();     // data visulizer here after break point is set on the return new Movie[0]******************************************************
 
             using (var conn = CreateConnection())

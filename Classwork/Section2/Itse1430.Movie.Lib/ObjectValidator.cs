@@ -20,7 +20,7 @@ namespace Itse1430.Movie.Lib
         {
             var context = new ValidationContext(value);
 
-            Validator.ValidateObject(value, context, true);
+            Validator.ValidateObject(value, context, true);         // used for validation(validator)
         }
     }
 }

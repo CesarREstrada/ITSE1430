@@ -17,7 +17,9 @@ namespace Nile.Stores
         public Product Add ( Product product )
         {
 			//TODO: Check arguments
-
+			if (product == null)
+				throw new ArgumentNullException("product");
+			ObjectValidator.TryValidate(product);
 
 			//TODO: Validate product
 			try

@@ -1,3 +1,8 @@
+-- Cesar Estrada
+-- ITSE 1430
+-- November 26, 2018
+-- UpdateProduct.sql
+
 CREATE PROCEDURE [dbo].[UpdateProduct]
     @id INT,
 	@name NVARCHAR(100),

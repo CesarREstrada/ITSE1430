@@ -1,3 +1,8 @@
+-- Cesar Estrada
+-- ISTE 1430
+-- November 26, 2018
+-- InitializeProducts.PostDeployment.sql
+
 /*
 Post-Deployment Script Template							
 --------------------------------------------------------------------------------------

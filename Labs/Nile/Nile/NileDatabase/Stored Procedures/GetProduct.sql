@@ -1,3 +1,8 @@
+-- Cesar Estrada
+-- ITSE 1430
+-- November 26, 2018
+-- GetProduct.sql
+
 CREATE PROCEDURE [dbo].[GetProduct]
     @id INT
 AS BEGIN

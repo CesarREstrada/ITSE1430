@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Cesar Estrada
+// ITSE 1430
+// November 26, 2018
+// AboutForm.cs
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

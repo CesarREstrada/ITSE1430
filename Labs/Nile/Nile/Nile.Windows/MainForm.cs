@@ -1,6 +1,8 @@
-/*
- * ITSE 1430
- */
+// Cesar Estrada
+// ITSE 1430
+// November 26, 2018
+// MainForm.cs
+
 using System;
 using System.Windows.Forms;
 
@@ -38,9 +40,16 @@ namespace Nile.Windows
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Handle errors
-            //Save product
-            _database.Add(child.Product);
+			//TODO: Handle errors
+			//Save product
+			try
+			{
+				_database.Add(child.Product);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			};
             UpdateList();
         }
 

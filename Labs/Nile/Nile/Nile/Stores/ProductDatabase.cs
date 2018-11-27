@@ -1,6 +1,8 @@
-/*
- * ITSE 1430
- */
+// Cesar Estrada
+// ITSE 1430
+// November 26, 2018
+// ProductDatabase.cs
+
 using System;
 using System.Collections.Generic;
 
@@ -14,9 +16,18 @@ namespace Nile.Stores
         /// <returns>The added product.</returns>
         public Product Add ( Product product )
         {
-            //TODO: Check arguments
+			//TODO: Check arguments
 
-            //TODO: Validate product
+
+			//TODO: Validate product
+			try
+			{
+				AddCore(product);
+			}
+			catch (Exception e)
+			{
+				throw new Exception("Add failed", e);
+			}
 
             //Emulate database by storing copy
             return AddCore(product);
@@ -52,9 +63,17 @@ namespace Nile.Stores
         /// <returns>The updated product.</returns>
         public Product Update ( Product product )
         {
-            //TODO: Check arguments
+			//TODO: Check arguments
 
-            //TODO: Validate product
+			//TODO: Validate product
+			try
+			{
+				Update(product);			// double check this it may be UpdateCare(product); but it gave an error
+			}
+			catch (Exception e)
+			{
+				throw new Exception("Updated failed", e);
+			}
 
             //Get existing product
             var existing = GetCore(product.Id);

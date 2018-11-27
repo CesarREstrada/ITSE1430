@@ -1,6 +1,8 @@
-/*
- * ITSE 1430
- */
+// Cesar Estrada
+// ITSE 1430
+// November 26, 2018
+// MemoryProductDatabase.cs
+
 using System;
 using System.Collections.Generic;
 

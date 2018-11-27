@@ -1,3 +1,8 @@
+-- Cesar Estrada
+-- ITSE 1430
+-- November 26, 2018
+-- AddProduct.sql
+
 CREATE PROCEDURE [dbo].[AddProduct]
 	@name NVARCHAR(100),
     @price MONEY,    

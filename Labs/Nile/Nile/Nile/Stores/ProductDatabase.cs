@@ -72,12 +72,11 @@ namespace Nile.Stores
         public Product Update ( Product product )
         {
 			//TODO: Check arguments
-			var exists = Update(product);
+			var exists = product.Name;
 			if (product == null)
 				throw new ArgumentNullException("product");
 			else if (exists == null)
-					throw new ArgumentNullException("product");
-
+				throw new ArgumentNullException("product");
 
 			ObjectValidator.TryValidate(product);
 

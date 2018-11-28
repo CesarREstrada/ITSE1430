@@ -22,8 +22,8 @@ namespace Nile.Windows
         {
             base.OnLoad(e);
 
-            _gridProducts.AutoGenerateColumns = false;
-
+            _gridProducts.AutoGenerateColumns = true;
+			
             UpdateList();
         }
 
@@ -113,9 +113,16 @@ namespace Nile.Windows
                                 "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 
-            //TODO: Handle errors
-            //Delete product
-            _database.Remove(product.Id);
+			//TODO: Handle errors
+			//Delete product
+			try
+			{
+				_database.Remove(product.Id);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			};			
             UpdateList();
         }
 
@@ -126,9 +133,16 @@ namespace Nile.Windows
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Handle errors
-            //Save product
-            _database.Update(child.Product);
+			//TODO: Handle errors
+			//Save product
+			try
+			{
+				_database.Update(child.Product);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			};			
             UpdateList();
         }
 
@@ -142,13 +156,16 @@ namespace Nile.Windows
 
         private void UpdateList ()
         {
-            //TODO: Handle errors
-
-            _bsProducts.DataSource = _database.GetAll();
+			//TODO: Handle errors
+			try
+			{
+				_bsProducts.DataSource = _database.GetAll();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			};			
         }
-
-        private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
-		#endregion
 
 		private void OnHelpAbout_Click(object sender, EventArgs e)
 		{
@@ -156,5 +173,10 @@ namespace Nile.Windows
 			if (form.ShowDialog(this) == DialogResult.Cancel)
 				return;
 		}
+
+		private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
+		#endregion
+
+		
 	}
 }

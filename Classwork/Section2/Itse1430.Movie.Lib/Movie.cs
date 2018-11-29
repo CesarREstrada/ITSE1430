@@ -122,7 +122,7 @@ namespace Itse1430.MovieLib
         //}
 
          // showing miexed accessibility
-        public int Id { get; private set; }             // dummy property
+        public int Id { get; set; }             // dummy property
                                                         // mixed accessibility
                                                         // 1) only one you can change
                                                         // 2) it will always be more restrictive

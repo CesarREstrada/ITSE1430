@@ -9,9 +9,9 @@ using Itse1430.MovieLib;
 
 namespace Itse1430MovieLib.SQL          // in programming it should be Sql
 {
-    public class SqlMoviedDatebase : MovieDatabase      // using for movie database // SQL impent abstract extraction
+    public class SqlMovieDatebase : MovieDatabase      // using for movie database // SQL impent abstract extraction
     {
-        public SqlMoviedDatebase( string connectionString )
+        public SqlMovieDatebase( string connectionString )
         {
             //Validate
             if (connectionString == null)

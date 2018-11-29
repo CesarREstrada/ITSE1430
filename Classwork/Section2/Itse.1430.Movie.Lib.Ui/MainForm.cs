@@ -38,7 +38,7 @@ namespace Itse._1430.MovieLib.Ui
             base.OnLoad(e);
                                                                    // for App.Config 
             var connString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;       // adds connection string
-            _database = new SqlMoviedDatebase(connString);
+            _database = new SqlMovieDatebase(connString);
 
             //TODO: Remove this line(test for errots)
            // _database.Add(new Movie());

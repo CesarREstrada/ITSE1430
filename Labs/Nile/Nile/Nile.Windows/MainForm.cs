@@ -3,8 +3,10 @@
 // November 26, 2018
 // MainForm.cs
 
+using Nile.Stores.Sql;
 using System;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Nile.Windows
 {
@@ -22,7 +24,12 @@ namespace Nile.Windows
         {
             base.OnLoad(e);
 
-            _gridProducts.AutoGenerateColumns = true;
+			//var connString = ConfigurationManager
+			//					.ConnectionStrings["Database"]
+			//					.ConnectionString;
+			//_database = new NileSqlDatabase(connString);
+
+			_gridProducts.AutoGenerateColumns = true;
 			
             UpdateList();
         }
@@ -175,6 +182,7 @@ namespace Nile.Windows
 		}
 
 		private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
+		//private IProductDatabase _database;
 		#endregion
 
 		

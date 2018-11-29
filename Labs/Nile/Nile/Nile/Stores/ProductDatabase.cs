@@ -24,6 +24,7 @@ namespace Nile.Stores
 			//TODO: Validate product
 			try
 			{
+				//_database.Add(
 				AddCore(product);
 			}
 			catch (Exception e)
@@ -73,32 +74,34 @@ namespace Nile.Stores
         {
 			//TODO: Check arguments
 			var exists = product.Name;
-			if (product == null)
-				throw new ArgumentNullException("product");
-			else if (exists == null)
-				throw new ArgumentNullException("product");
+			//if (product == null)
+			//	throw new ArgumentNullException("product");
+			//else 
+			if (exists != product.Name)
+				throw new ArgumentException("product");
 
 			ObjectValidator.TryValidate(product);
 
 			//TODO: Validate product
 			try
 			{
-				Update(product);			// double check this it may be UpdateCare(product); but it gave an error
+				Update(product);      // double check this it may be UpdateCare(product); but it gave an error
 			}
 			catch (Exception e)
 			{
 				throw new Exception("Updated failed", e);
 			};
 
-            //Get existing product
-            var existing = GetCore(product.Id);
 
-            return UpdateCore(existing, product);
-        }
+			//Get existing product
+			var existing = GetCore(product.Id);
+			return UpdateCore(existing, product);
 
-        #region Protected Members
+		}
+		
+		#region Protected Members
 
-        protected abstract Product GetCore( int id );
+		protected abstract Product GetCore( int id );
 
         protected abstract IEnumerable<Product> GetAllCore();
 

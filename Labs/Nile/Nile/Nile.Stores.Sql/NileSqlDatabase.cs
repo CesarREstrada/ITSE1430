@@ -72,12 +72,12 @@ namespace Nile.Stores.Sql
 				};
 				products.Add(product);
 			}
-				return null;
+				return products;
 		}
 
 		protected override Product GetCore(int id)
 		{
-			throw new NotImplementedException();
+			return null;
 		}
 
 		protected override void RemoveCore(int id)
@@ -109,7 +109,7 @@ namespace Nile.Stores.Sql
 				cmd.ExecuteNonQuery();
 			};
 
-			return null;
+			return newItem;
 		}
 
 		private SqlConnection CreateConnection() => new SqlConnection(_connectionString);

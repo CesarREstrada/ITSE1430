@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<Movie.Mvc.Models.MovieModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List";
+    
 }
 
-<h2>Index</h2>
+<h2>Movie List</h2> @*Professor had us remove this*@  
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,19 +13,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
+            @*@Html.DisplayNameFor(model => model.Name)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Description
+            @*@Html.DisplayNameFor(model => model.Description)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseYear)
+            Release Year
+            @*@Html.DisplayNameFor(model => model.ReleaseYear)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RunLength)
+            Run Length
+            @*@Html.DisplayNameFor(model => model.RunLength)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsOwned)
+            Owned?
+            @*@Html.DisplayNameFor(model => model.IsOwned)*@
         </th>
         <th></th>
     </tr>
@@ -32,7 +38,8 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @item.Name
+            @*@Html.DisplayFor(modelItem => item.Name)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
@@ -47,6 +54,7 @@
             @Html.DisplayFor(modelItem => item.IsOwned)
         </td>
         <td>
+            @*<a href="~/movie/index/" + @item, id=""*@
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })

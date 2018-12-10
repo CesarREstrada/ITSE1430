@@ -15,9 +15,9 @@ namespace EventPlanner.Mvc.Controllers
 			_database = new MemoryEventDatabase();
 		}
 
-		public ActionResult Index()
+		public ActionResult Index(EventCriteria criteria)
 		{
-			var items = _database.GetAll();
+			var items = _database.GetAll(criteria);
 
 			return View(items.Select(i => new model(i)));
 			//return View("Index");

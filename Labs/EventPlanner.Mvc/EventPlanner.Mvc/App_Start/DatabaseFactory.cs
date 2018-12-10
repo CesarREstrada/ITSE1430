@@ -8,13 +8,15 @@ using System;
 
 namespace EventPlanner.Mvc.App_Start
 {
-	public class DatabaseFactory
+	public static class DatabaseFactory
 	{		
 		static DatabaseFactory()
 		{
-			var db = new MemoryEventDatabase();
+			eventDatabase = new MemoryEventDatabase();
 
-			db.Add(new ScheduledEvent()
+			//var db = new MemoryEventDatabase();
+
+			eventDatabase.Add(new ScheduledEvent()
 			{
 				Name = "Doctor Apportionment",
 				Description = "Yearly Exam",
@@ -23,11 +25,16 @@ namespace EventPlanner.Mvc.App_Start
 				IsPublic = false
 			});
 
-			Database = db;
+			//Database = db;
 		}
 
-		private DatabaseFactory() { }
+		private static MemoryEventDatabase eventDatabase;
+		//private DatabaseFactory() { }
 
-		public static IEventDatabase Database { get; }
+		//public static IEventDatabase Database { get; }
+		public static MemoryEventDatabase GetMemoryEventDatabase()
+		{
+			return eventDatabase;
+		}
 	}	
 }
